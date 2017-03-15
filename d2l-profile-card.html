@@ -91,14 +91,13 @@
 			school: String,
 			background: String,
 			grade: { type: String, value: null },
-			_showDefaultIcon:{
+			_showDefaultIcon: {
 				type: Boolean,
 				computed: 'showDefaultIcon(icon)'
 			}
 		},
-
-		showDefaultIcon: function(icon){
-			return icon === null || icon == undefined;
+		showDefaultIcon: function(icon) {
+			return !icon;
 		}
 	});
 	</script>
