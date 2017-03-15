@@ -87,9 +87,9 @@
 				var profile = userResponse.getSubEntityByRel('https://api.brightspace.com/rels/user-profile');
 				if (profile) {
 					var image = profile.getSubEntitiesByRel('https://api.brightspace.com/rels/profile-image')[0];
-					if (image.class.indexOf('defaultImage') != -1) {
+					if (image.class.indexOf('defaultImage') > 0) {
 						this._iconUrl = (image.getLinkByRel('https://api.brightspace.com/rels/thumbnail#regular') || {}).href;
-					}else{
+					} else {
 						this._iconUrl = null;
 					}
 				}

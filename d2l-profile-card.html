@@ -70,8 +70,8 @@
 			<img src$="[[background]]" alt="" role="presentation" class="profile-card-background" />
 		</div>
 		<div class="profile-card-avatar">
-			<img src$="[[icon]]" hidden$="{{!_showDefaultIcon}}" alt="" role="presentation" />
-			<d2l-icon icon="d2l-tier2:profile-pic" hidden$="{{_showDefaultIcon}}" class="profile-card-default-icon"></d2l-icon>
+			<img src$="[[icon]]" hidden$="{{!_showDefaultIcon(icon)}}" alt="" role="presentation" />
+			<d2l-icon icon="d2l-tier2:profile-pic" hidden$="{{_showDefaultIcon(icon)}}" class="profile-card-default-icon"></d2l-icon>
 		</div>
 		<h3 class="profile-card-name">[[name]]</h3>
 		<p hidden="[[grade]]" class="profile-card-school">[[school]]</p>
@@ -91,13 +91,9 @@
 			school: String,
 			background: String,
 			grade: { type: String, value: null },
-			_showDefaultIcon: {
-				type: Boolean,
-				computed: 'showDefaultIcon(icon)'
-			}
 		},
-		showDefaultIcon: function(icon) {
-			return !icon;
+		_showDefaultIcon: function(icon) {
+			return !icon && icon !== '';
 		}
 	});
 	</script>
