@@ -1,25 +1,25 @@
 {
-  "name": "d2l-profile-card",
-  "version": "0.0.1",
-  "homepage": "https://github.com/Brightspace/profile-card",
-  "authors": [
-    "Brightspace"
-  ],
-  "description": "D2L Profile Card",
-  "moduleType": [
-    "polymer"
-  ],
-  "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
-  "dependencies": {
-    "d2l-ajax": "^3.2.6",
-	"d2l-icons": "~3.0.0",
-    "d2l-siren-parser": "git://github.com/Brightspace/d2l-siren-parser-ui.git#^1.1.2"
-  }
+	"name": "d2l-profile-card",
+	"version": "0.0.1",
+	"homepage": "https://github.com/Brightspace/profile-card",
+	"authors": [
+		"Brightspace"
+	],
+	"description": "D2L Profile Card",
+	"moduleType": [
+		"polymer"
+	],
+	"license": "MIT",
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"bower_components",
+		"test",
+		"tests"
+	],
+	"dependencies": {
+		"d2l-ajax": "^3.2.6",
+		"d2l-icons": "~3.0.0",
+		"d2l-siren-parser": "git://github.com/Brightspace/d2l-siren-parser-ui.git#^1.1.2"
+	}
 }
