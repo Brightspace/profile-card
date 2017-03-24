@@ -20,7 +20,7 @@
 				height: 80px;
 				border: 2px white solid;
 				border-radius: 14px;
-				margin: -40px auto 0 auto;
+				margin: -40px auto 19px auto;
 				background-color: white;
 				overflow: hidden;
 			}
@@ -49,6 +49,21 @@
 				height: 100%;
 			}
 
+			.user-tile-information-wrapper {
+				@apply --d2l-body-compact-text;
+			}
+
+			.user-tile-name {
+				font-size: 1.25rem;
+				font-weight: bold;
+				margin: 0 auto 0 auto;
+			}
+
+			.user-tile-school {
+				margin-top: 4px;
+				font-size: 0.7rem;
+			}
+
 			d2l-tile {
 				--tile-image-height: 100px;
 				min-height: 100%;
@@ -62,11 +77,13 @@
 				<d2l-icon icon="navigation-48:profile" hidden$="{{!_hideCustomIcon(icon)}}" class="user-tile-default-icon"></d2l-icon>
 				<img src$="[[icon]]" hidden$="{{_hideCustomIcon(icon)}}" alt="" role="presentation" class="user-tile-avatar-image"/>
 			</div>
-			<h3 class="user-tile-name">[[name]]</h3>
-			<p hidden="[[grade]]" class="user-tile-school">[[school]]</p>
-			<p hidden="[[!grade]]" class="user-tile-school"><span class="user-tile-grade">[[grade]]</span> <span>-</span> <span>[[school]]</span></p>
-			<div class="user-tile-items">
-				<slot></slot>
+			<div class="user-tile-information-wrapper">
+				<h3 class="user-tile-name">[[name]]</h3>
+				<p hidden="[[grade]]" class="user-tile-school">[[school]]</p>
+				<p hidden="[[!grade]]" class="user-tile-school"><span class="user-tile-grade">Grade 6, Room 4</span> <span>-</span> <span>[[school]]</span></p>
+				<div class="user-tile-items">
+					<slot></slot>
+				</div>
 			</div>
 		</d2l-tile>
 	</template>
