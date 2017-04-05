@@ -23,6 +23,7 @@
     "d2l-icons": "^3.0.0",
     "d2l-organization-hm-behavior": "git://github.com/Brightspace/organization-hm-behavior.git#^1.0.0",
     "iron-icon": "^1.0.0",
-    "d2l-tile": "git://github.com/Brightspace/d2l-tile#^1.0.2"
+    "d2l-tile": "git://github.com/Brightspace/d2l-tile#^1.0.2",
+    "d2l-image": "git://github.com/Brightspace/d2l-tile#^1.0.0"
   }
 }

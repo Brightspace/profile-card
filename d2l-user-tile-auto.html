@@ -34,6 +34,7 @@
 			icon=[[_iconUrl]]
 			background=[[_backgroundUrl]]
 			background-color=[[_backgroundColor]]
+			token=[[token]]
 		>
 			<slot></slot>
 		</d2l-user-tile>
@@ -100,7 +101,7 @@
 					if (image.class.indexOf('default-image') > -1) {
 						this._iconUrl = null;
 					} else {
-						this._iconUrl = (image.getLinkByRel(this.HypermediaRels.thumbnailRegular) || {}).href;
+						this._iconUrl = (image.getLinkByRel(this.HypermediaRels.thumbnailAlternative) || {}).href;
 					}
 				}
 

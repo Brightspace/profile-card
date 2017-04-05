@@ -2,6 +2,7 @@
 <link rel="import" href="../d2l-icons/d2l-icons.html">
 <link rel="import" href="../d2l-tile/d2l-tile.html">
 <link rel="import" href="icons.html">
+<link rel="import" href="../d2l-image/d2l-image.html">
 
 <dom-module id="d2l-user-tile">
 	<template>
@@ -75,7 +76,12 @@
 		<d2l-tile img-url="[[background]]" style$="[[_createBackgroundStyle(backgroundColor)]]">
 			<div class="user-tile-avatar">
 				<d2l-icon icon="navigation-48:profile" hidden$="{{!_hideCustomIcon(icon)}}" class="user-tile-default-icon"></d2l-icon>
-				<img src$="[[icon]]" hidden$="{{_hideCustomIcon(icon)}}" alt="" role="presentation" class="user-tile-avatar-image"/>
+				<div hidden$="{{_hideCustomIcon(icon)}}" class="user-tile-avatar-image">
+					<d2l-image
+						image-url$=[[icon]]
+						token$=[[token]]
+					></d2l-image>
+				</div>
 			</div>
 			<div class="user-tile-information-wrapper">
 				<h3 class="user-tile-name">[[name]]</h3>
@@ -101,7 +107,8 @@
 			icon: {
 				type: String,
 				value: null
-			}
+			},
+			token: String
 		},
 		_hideCustomIcon: function(icon) {
 			return !icon;
