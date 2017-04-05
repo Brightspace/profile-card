@@ -77,9 +77,7 @@
 			<div class="user-tile-avatar">
 				<d2l-icon icon="navigation-48:profile" hidden$="{{!_hideCustomIcon(icon)}}" class="user-tile-default-icon"></d2l-icon>
 				<div hidden$="{{_hideCustomIcon(icon)}}" class="user-tile-avatar-image">
-					<d2l-image
-						image-url$=[[icon]]
-						token$=[[token]]
+					<d2l-image id="profileImage"
 					></d2l-image>
 				</div>
 			</div>
@@ -108,14 +106,17 @@
 				type: String,
 				value: null
 			},
-			token: String
 		},
+
 		_hideCustomIcon: function(icon) {
 			return !icon;
 		},
 		_createBackgroundStyle: function(backgroundColor) {
 			this.customStyle['--tile-image-background'] = backgroundColor || '';
 			this.updateStyles();
+		},
+		getProfileImage: function( imageUrl, token) {
+			this.$.profileImage.getProfileImage( imageUrl, token );
 		}
 	});
 	</script>
