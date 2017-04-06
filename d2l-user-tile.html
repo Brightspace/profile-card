@@ -45,11 +45,6 @@
 				font-weight: bold;
 			}
 
-			.user-tile-avatar-image {
-				width: 100%;
-				height: 100%;
-			}
-
 			.user-tile-information-wrapper {
 				@apply --d2l-body-compact-text;
 			}
@@ -75,13 +70,15 @@
 
 		<d2l-tile img-url="[[background]]" style$="[[_createBackgroundStyle(backgroundColor)]]">
 			<div class="user-tile-avatar">
-				<d2l-icon icon="navigation-48:profile" hidden$="{{!_hideCustomIcon(icon)}}" class="user-tile-default-icon"></d2l-icon>
-				<div hidden$="{{_hideCustomIcon(icon)}}" class="user-tile-avatar-image">
+				<template is="dom-if" if="{{_hideCustomIcon(icon)}}">
+					<d2l-icon icon="navigation-48:profile" class="user-tile-default-icon"></d2l-icon>
+				</template>
+				<template is="dom-if" if="{{!_hideCustomIcon(icon)}}">
 					<d2l-image
-						image-url$=[[icon]]
-						token$=[[token]]
+						image-url="[[icon]]"
+						token="[[token]]"
 					></d2l-image>
-				</div>
+				</template>
 			</div>
 			<div class="user-tile-information-wrapper">
 				<h3 class="user-tile-name">[[name]]</h3>
