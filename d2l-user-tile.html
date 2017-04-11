@@ -107,12 +107,18 @@
 			},
 			token: String
 		},
+		listeners: {
+			'd2l-image-failed-to-load': '_onImageLoadFailure'
+		},
 		_hideCustomIcon: function(icon) {
 			return !icon;
 		},
 		_createBackgroundStyle: function(backgroundColor) {
 			this.customStyle['--tile-image-background'] = backgroundColor || '';
 			this.updateStyles();
+		},
+		_onImageLoadFailure: function(response) {
+			this.icon = null;
 		}
 	});
 	</script>
