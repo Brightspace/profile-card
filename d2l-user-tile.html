@@ -58,6 +58,8 @@
 			.user-tile-school {
 				margin-top: 4px;
 				font-size: 0.7rem;
+				display: flex;
+				justify-content: space-around;
 			}
 
 			d2l-tile {
@@ -81,9 +83,10 @@
 				</template>
 			</div>
 			<div class="user-tile-information-wrapper">
-				<h3 class="user-tile-name">[[name]]</h3>
+				<p class="user-tile-name">[[name]]</p>
 				<p hidden="[[grade]]" class="user-tile-school">[[school]]</p>
-				<p hidden="[[!grade]]" class="user-tile-school"><span class="user-tile-grade">[[grade]]</span> <span>-</span> <span>[[school]]</span></p>
+				<p hidden="[[!grade]]" class="user-tile-school">
+					<span class="user-tile-grade">[[grade]]</span> <span>-</span> <span>[[school]]</span></p>
 				<div class="user-tile-items">
 					<slot></slot>
 				</div>
