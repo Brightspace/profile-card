@@ -58,8 +58,15 @@
 			.user-tile-school {
 				margin-top: 4px;
 				font-size: 0.7rem;
+			}
+
+			.user-tile-school:not([hidden]) {
 				display: flex;
-				justify-content: space-around;
+				justify-content: center;
+			}
+
+			.grade-divider {
+				margin: 0 4px;
 			}
 
 			d2l-tile {
@@ -86,7 +93,8 @@
 				<p class="user-tile-name">[[name]]</p>
 				<p hidden="[[grade]]" class="user-tile-school">[[school]]</p>
 				<p hidden="[[!grade]]" class="user-tile-school">
-					<span class="user-tile-grade">[[grade]]</span> <span>-</span> <span>[[school]]</span></p>
+					<span class="user-tile-grade">[[grade]]</span> <span class="grade-divider">-</span> <span>[[school]]</span>
+				</p>
 				<div class="user-tile-items">
 					<slot></slot>
 				</div>
@@ -123,7 +131,7 @@
 			this.customStyle['--tile-image-background'] = backgroundColor || '';
 			this.updateStyles();
 		},
-		_onImageLoadFailure: function(response) {
+		_onImageLoadFailure: function() {
 			this.icon = null;
 		}
 	});

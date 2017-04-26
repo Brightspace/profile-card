@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "postinstall": "bower install",
-    "test": "npm run test:lint:js",
-    "test:lint:js": "eslint --ext .js,.html ."
+    "test": "npm run test:lint:js && npm run test:unit:wct",
+    "test:lint:js": "eslint --ext .js,.html .",
+    "test:unit:wct": "wct"
   },
   "homepage": "https://github.com/Brightspace/user-tile",
   "repository": {
@@ -28,6 +29,7 @@
     "eslint-config-brightspace": "^0.2.1",
     "eslint-plugin-html": "^1.4.0",
     "polylint": "^2.10.1",
-    "rimraf": "^2.5.2"
+    "rimraf": "^2.5.2",
+    "web-component-tester": "^5.0.1"
   }
 }

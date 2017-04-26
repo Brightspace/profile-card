@@ -1,0 +1,28 @@
+<link rel="import" href="../../polymer/polymer.html">
+<dom-module id="d2l-user-tile-demo-container">
+	<template>
+		<style>
+            .container {
+                position: relative;
+                width: 100%;
+            }
+
+			::content d2l-user-tile {
+                display: inline-block;
+				width: 33%;
+                min-width: 400px;
+                height: 250px;
+			}
+		</style>
+        <div class="container">
+		    <content></content>
+        </div>
+    </template>
+	<script>
+		'use strict';
+		
+		Polymer({
+			is: 'd2l-user-tile-demo-container'
+		});
+	</script>
+</dom-module>
