@@ -27,7 +27,7 @@ There are two variants of the tile - `d2l-user-tile` and `d2l-user-tile-auto`. B
 
 ### d2l-user-tile
 
-The basic tile - it will display a user tile for provided user information - `name`, user `icon`, `grade`, `school`, and either a `background` URL or a `background-color`.
+The basic tile - it will display a user tile for provided user information - `name`, user `icon`, and either a `background` URL or a `background-color`.
 
 ```html
 <d2l-user-tile
@@ -35,8 +35,6 @@ The basic tile - it will display a user tile for provided user information - `na
 	background-color="#00FF00"
 	name="User's name"
 	icon="/path/to/user/icon.jpg"
-	grade="Grade 10"
-	school="A Very Good School"
 	placeholders>
 
 	<!-- Content to appear in the user tile goes here -->

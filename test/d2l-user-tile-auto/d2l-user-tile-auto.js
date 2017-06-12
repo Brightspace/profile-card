@@ -59,7 +59,6 @@ describe('<d2l-user-tile-auto>', function() {
 		it('sets the properties on the internal <d2l-user-tile> appropriately', function(done) {
 			sandbox.stub(component, 'generateUserRequest', function() {
 				component._name = 'name';
-				component._school = 'school';
 				component._iconUrl = 'iconUrl';
 				component._backgroundUrl = 'backgroundUrl';
 				component._backgroundColor = 'backgroundColor';
@@ -70,7 +69,6 @@ describe('<d2l-user-tile-auto>', function() {
 			setTimeout(function() {
 				var innerTile = component.$$('d2l-user-tile');
 				expect(innerTile.name).to.equal('name');
-				expect(innerTile.school).to.equal('school');
 				expect(innerTile.icon).to.equal('iconUrl');
 				expect(innerTile.background).to.equal('backgroundUrl');
 				expect(innerTile.backgroundColor).to.equal('backgroundColor');

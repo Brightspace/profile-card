@@ -38,10 +38,6 @@
 				--d2l-icon-width: 100%;
 			}
 
-			.user-tile-grade {
-				font-weight: bold;
-			}
-
 			.user-tile-information-wrapper {
 				@apply --d2l-body-compact-text;
 				display: flex;
@@ -53,11 +49,6 @@
 				font-weight: bold;
 				margin: 0 auto;
 				padding-bottom: 10px;
-			}
-
-			.user-tile-school {
-				margin: 4px auto auto auto;
-				font-size: 0.7rem;
 			}
 
 			.text-placeholder {
@@ -104,10 +95,6 @@
 		properties: {
 			background: String,
 			backgroundColor: String,
-			grade: {
-				type: String,
-				value: null
-			},
 			icon: {
 				type: String,
 				value: null
@@ -119,10 +106,6 @@
 			placeholders: {
 				type: Boolean,
 				value: false
-			},
-			school: {
-				type: String,
-				value: null
 			},
 			token: {
 				type: String,
@@ -140,10 +123,6 @@
 
 		_hideNamePlaceholder: function(placeholders, name) {
 			return !placeholders || 'string' === typeof name;
-		},
-
-		_hideSchoolPlaceholder: function(placeholders, school, grade) {
-			return !placeholders || 'string' === typeof school || 'string' === typeof grade;
 		},
 
 		_createBackgroundStyle: function(backgroundColor) {
