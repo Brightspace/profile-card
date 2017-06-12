@@ -52,6 +52,7 @@
 				font-size: 1.25rem;
 				font-weight: bold;
 				margin: 0 auto;
+				padding-bottom: 10px;
 			}
 
 			.user-tile-school {
@@ -88,13 +89,6 @@
 			<div class="user-tile-information-wrapper">
 				<p class="user-tile-name" hidden$="[[!_hideNamePlaceholder(placeholders, name)]]">[[name]]</p>
 				<p class="user-tile-name text-placeholder" hidden$="[[_hideNamePlaceholder(placeholders, name)]]">&nbsp;</p>
-
-				<p class="user-tile-school" hidden$="[[!_hideSchoolPlaceholder(placeholders, school, grade)]]">
-					<span class="user-tile-grade" hidden$="[[!grade]]">[[grade]]</span>
-					<span hidden$="[[!grade]]">-</span>
-					<span>[[school]]</span>
-				</p>
-				<p class="user-tile-school text-placeholder" hidden$="[[_hideSchoolPlaceholder(placeholders, school, grade)]]">&nbsp;</p>
 
 				<div class="user-tile-items">
 					<slot></slot>
