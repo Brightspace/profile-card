@@ -58,30 +58,5 @@ describe('<d2l-user-tile>', function() {
 				expect(placeholder.getAttribute('hidden')).to.equal('');
 			});
 		});
-
-		describe('for school/grade field', function() {
-			it('should show a placeholder when neither grade nor school is set', function() {
-				var text = component.$$('.user-tile-school:not(.text-placeholder)');
-				var placeholder = component.$$('.user-tile-school.text-placeholder');
-				expect(text.getAttribute('hidden')).to.equal('');
-				expect(placeholder.getAttribute('hidden')).to.be.null;
-			});
-
-			it('should hide the placeholder when school is set', function() {
-				component.school = '';
-				var text = component.$$('.user-tile-school:not(.text-placeholder)');
-				var placeholder = component.$$('.user-tile-school.text-placeholder');
-				expect(text.getAttribute('hidden')).to.be.null;
-				expect(placeholder.getAttribute('hidden')).to.equal('');
-			});
-
-			it('should hide the placeholder when grade is set', function() {
-				component.grade = '';
-				var text = component.$$('.user-tile-school:not(.text-placeholder)');
-				var placeholder = component.$$('.user-tile-school.text-placeholder');
-				expect(text.getAttribute('hidden')).to.be.null;
-				expect(placeholder.getAttribute('hidden')).to.equal('');
-			});
-		});
 	});
 });
