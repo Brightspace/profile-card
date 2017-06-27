@@ -15,6 +15,7 @@
 				cursor: pointer;
 				display: block;
 				position: relative;
+				animation: fade-in 0.33s forwards;
 			}
 
 			.user-tile-avatar {
@@ -70,6 +71,11 @@
 			@keyframes fade-out-then-in {
 				0% { opacity: 1; }
 				50% { opacity: 0; }
+				100% { opacity: 1; }
+			}
+
+			@keyframes fade-in {
+				0% { opacity: 0; }
 				100% { opacity: 1; }
 			}
 
