@@ -45,11 +45,15 @@
 				type: String,
 				value: null
 			},
+			getToken: {
+				type: Object,
+				value: null
+			},
 			_doneRequests: Boolean
 		},
 
 		observers: [
-			'_onUserChange( userUrl, token )'
+			'_onUserChange( userUrl, getToken )'
 		],
 
 		behaviors: [
@@ -59,12 +63,16 @@
 		],
 
 		ready: function() {
-			this._onUserChange(this.userUrl, this.token);
+			this._onUserChange(this.userUrl, this.getToken);
 		},
 
-		_onUserChange: function(userUrl, token) {
-			if (userUrl && token) {
-				this.generateUserRequest(userUrl, token, { background: true });
+		_onUserChange: function(userUrl, getToken) {
+			var self = this;
+			if (userUrl && typeof getToken === 'function') {
+				getToken(userUrl)
+					.then(function(token) {
+						self.generateUserRequest(userUrl, token, { background: true });
+					});
 			}
 		}
 	});
