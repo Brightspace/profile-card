@@ -1,4 +1,4 @@
-/* global describe, beforeEach, afterEach, it, expect, fixture, sinon */
+/* global describe, beforeEach, afterEach, it, expect, fixture, sinon, Promise */
 
 'use strict';
 
@@ -6,7 +6,10 @@ describe('<d2l-user-tile-auto>', function() {
 	var component,
 		sandbox,
 		userUrl = 'https://example.com',
-		token = 'some-oauth-token';
+		token = 'some-oauth-token',
+		getToken = function() {
+			return Promise.resolve(token);
+		};
 
 	beforeEach(function() {
 		component = fixture('basic');
@@ -25,7 +28,7 @@ describe('<d2l-user-tile-auto>', function() {
 		it('should not generate the user request if the URL is empty', function(done) {
 			var spy = sandbox.spy(component, '_onUserChange');
 			var stub = sandbox.stub(component, 'generateUserRequest');
-			component.token = token;
+			component.getToken = getToken;
 			setTimeout(function() {
 				expect(spy.called).to.be.true;
 				expect(stub.called).to.be.false;
@@ -47,7 +50,7 @@ describe('<d2l-user-tile-auto>', function() {
 		it('should generate the user request when both token and URL are set', function(done) {
 			var spy = sandbox.spy(component, '_onUserChange');
 			var stub = sandbox.stub(component, 'generateUserRequest');
-			component.token = token;
+			component.getToken = getToken;
 			component.userUrl = userUrl;
 			setTimeout(function() {
 				expect(spy.called).to.be.true;
@@ -66,7 +69,7 @@ describe('<d2l-user-tile-auto>', function() {
 				component._backgroundColor = 'backgroundColor';
 			});
 
-			component.token = token;
+			component.getToken = getToken;
 			component.userUrl = userUrl;
 			setTimeout(function() {
 				expect(innerTile.name).to.equal('name');
