@@ -9,6 +9,12 @@ describe('<d2l-user-tile-auto>', function() {
 		token = 'some-oauth-token',
 		getToken = function() {
 			return Promise.resolve(token);
+		},
+		dontGetToken = function() {
+			return Promise.reject(new Error('No token for that child'));
+		},
+		getNotToken = function() {
+			return Promise.resolve(null);
 		};
 
 	beforeEach(function() {
@@ -47,36 +53,62 @@ describe('<d2l-user-tile-auto>', function() {
 			});
 		});
 
-		it('should generate the user request when both token and URL are set', function(done) {
-			var spy = sandbox.spy(component, '_onUserChange');
-			var stub = sandbox.stub(component, 'generateUserRequest');
-			component.getToken = getToken;
-			component.userUrl = userUrl;
-			setTimeout(function() {
-				expect(spy.called).to.be.true;
-				expect(stub.calledWith(userUrl, token, sinon.match({ background: true }))).to.be.true;
-				done();
-			});
-		});
-
-		it('sets the properties on the internal <d2l-user-tile> appropriately', function(done) {
-			var innerTile = component.$$('d2l-user-tile');
-			sandbox.stub(innerTile, '_onImageLoadFailure', function() {});
-			sandbox.stub(component, 'generateUserRequest', function() {
-				component._name = 'name';
-				component._iconUrl = 'iconUrl';
-				component._backgroundUrl = 'backgroundUrl';
-				component._backgroundColor = 'backgroundColor';
+		describe('generating user request', function() {
+			it('should generate the user request when both getToken and URL are set, and getToken returns a token', function(done) {
+				var spy = sandbox.spy(component, '_onUserChange');
+				var stub = sandbox.stub(component, 'generateUserRequest');
+				component.getToken = getToken;
+				component.userUrl = userUrl;
+				setTimeout(function() {
+					expect(spy.called).to.be.true;
+					expect(stub.calledWith(userUrl, token, sinon.match({ background: true }))).to.be.true;
+					done();
+				});
 			});
 
-			component.getToken = getToken;
-			component.userUrl = userUrl;
-			setTimeout(function() {
-				expect(innerTile.name).to.equal('name');
-				expect(innerTile.icon).to.equal('iconUrl');
-				expect(innerTile.background).to.equal('backgroundUrl');
-				expect(innerTile.backgroundColor).to.equal('backgroundColor');
-				done();
+			it('should not generate the user request when getToken rejects', function(done) {
+				var spy = sandbox.spy(component, '_onUserChange');
+				var stub = sandbox.stub(component, 'generateUserRequest');
+				component.getToken = dontGetToken;
+				component.userUrl = userUrl;
+				setTimeout(function() {
+					expect(spy.called).to.be.true;
+					expect(stub.called).to.be.false;
+					done();
+				});
+			});
+
+			it('should not generate the user request when getToken returns something that is not a token', function(done) {
+				var spy = sandbox.spy(component, '_onUserChange');
+				var stub = sandbox.stub(component, 'generateUserRequest');
+				component.getToken = getNotToken;
+				component.userUrl = userUrl;
+				setTimeout(function() {
+					expect(spy.called).to.be.true;
+					expect(stub.called).to.be.false;
+					done();
+				});
+			});
+
+			it('sets the properties on the internal <d2l-user-tile> appropriately', function(done) {
+				var innerTile = component.$$('d2l-user-tile');
+				sandbox.stub(innerTile, '_onImageLoadFailure', function() {});
+				sandbox.stub(component, 'generateUserRequest', function() {
+					component._name = 'name';
+					component._iconUrl = 'iconUrl';
+					component._backgroundUrl = 'backgroundUrl';
+					component._backgroundColor = 'backgroundColor';
+				});
+
+				component.getToken = getToken;
+				component.userUrl = userUrl;
+				setTimeout(function() {
+					expect(innerTile.name).to.equal('name');
+					expect(innerTile.icon).to.equal('iconUrl');
+					expect(innerTile.background).to.equal('backgroundUrl');
+					expect(innerTile.backgroundColor).to.equal('backgroundColor');
+					done();
+				});
 			});
 		});
 	});

@@ -37,10 +37,6 @@
 	Polymer({
 		is: 'd2l-user-tile-auto',
 		properties: {
-			token: {
-				type: String,
-				value: null
-			},
 			userUrl: {
 				type: String,
 				value: null
@@ -71,7 +67,9 @@
 			if (userUrl && typeof getToken === 'function') {
 				getToken(userUrl)
 					.then(function(token) {
-						self.generateUserRequest(userUrl, token, { background: true });
+						if (typeof token === 'string') {
+							self.generateUserRequest(userUrl, token, { background: true });
+						}
 					});
 			}
 		}
