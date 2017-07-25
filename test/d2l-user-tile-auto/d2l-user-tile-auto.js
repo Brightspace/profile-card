@@ -42,7 +42,7 @@ describe('<d2l-user-tile-auto>', function() {
 			});
 		});
 
-		it('should not generate the user request if the token is empty', function(done) {
+		it('should not generate the user request if getToken is not set', function(done) {
 			var spy = sandbox.spy(component, '_onUserChange');
 			var stub = sandbox.stub(component, 'generateUserRequest');
 			component.userUrl = userUrl;
