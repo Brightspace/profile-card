@@ -37,19 +37,19 @@
 	Polymer({
 		is: 'd2l-user-tile-auto',
 		properties: {
-			token: {
+			userUrl: {
 				type: String,
 				value: null
 			},
-			userUrl: {
-				type: String,
+			getToken: {
+				type: Object,
 				value: null
 			},
 			_doneRequests: Boolean
 		},
 
 		observers: [
-			'_onUserChange( userUrl, token )'
+			'_onUserChange( userUrl, getToken )'
 		],
 
 		behaviors: [
@@ -59,12 +59,24 @@
 		],
 
 		ready: function() {
-			this._onUserChange(this.userUrl, this.token);
+			this._onUserChange(this.userUrl, this.getToken);
 		},
 
-		_onUserChange: function(userUrl, token) {
-			if (userUrl && token) {
-				this.generateUserRequest(userUrl, token, { background: true });
+		_onUserChange: function(userUrl, getToken) {
+			var self = this;
+			if (userUrl && getToken) {
+				if (typeof getToken === 'function') {
+					getToken(userUrl)
+						.then(function(token) {
+							if (typeof token === 'string') {
+								self.generateUserRequest(userUrl, token, { background: true });
+							} else {
+								throw new Error('token expected to be a string');
+							}
+						});
+				} else {
+					throw new Error('getToken expected to be a function');
+				}
 			}
 		}
 	});

@@ -7,7 +7,8 @@
     "test": "npm run test:lint:js && npm run test:lint:wc && npm run test:unit:wct",
     "test:lint:js": "eslint --ext .js,.html . test/ demo/",
     "test:lint:wc": "polymer lint --input d2l-user-tile-auto.html && polymer lint --input d2l-user-tile.html",
-    "test:unit:wct": "cross-env LAUNCHPAD_BROWSERS=firefox wct -p"
+    "test:unit:wct": "cross-env LAUNCHPAD_BROWSERS=firefox wct",
+    "test:unit:wct:local": "cross-env LAUNCHPAD_BROWSERS=firefox wct -p"
   },
   "homepage": "https://github.com/Brightspace/user-tile",
   "repository": {
