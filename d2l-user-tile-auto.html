@@ -45,11 +45,16 @@
 				type: Object,
 				value: null
 			},
+			token: {
+				type: String,
+				value: null
+			},
 			_doneRequests: Boolean
 		},
 
 		observers: [
-			'_onUserChange( userUrl, getToken )'
+			'_onUserChangeGetToken( userUrl, getToken )',
+			'_onUserChangeToken( userUrl, token )'
 		],
 
 		behaviors: [
@@ -59,10 +64,14 @@
 		],
 
 		ready: function() {
-			this._onUserChange(this.userUrl, this.getToken);
+			if (this.token) {
+				this._onUserChangeToken(this.userUrl, this.token);
+			} else {
+				this._onUserChangeGetToken(this.userUrl, this.getToken);
+			}
 		},
 
-		_onUserChange: function(userUrl, getToken) {
+		_onUserChangeGetToken: function(userUrl, getToken) {
 			var self = this;
 			if (userUrl && getToken) {
 				if (typeof getToken === 'function') {
@@ -77,6 +86,12 @@
 				} else {
 					throw new Error('getToken expected to be a function');
 				}
+			}
+		},
+
+		_onUserChangeToken: function(userUrl, token) {
+			if (userUrl && token) {
+				this.generateUserRequest(userUrl, token, { background: true });
 			}
 		}
 	});

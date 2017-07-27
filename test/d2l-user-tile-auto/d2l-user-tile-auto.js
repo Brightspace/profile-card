@@ -32,7 +32,7 @@ describe('<d2l-user-tile-auto>', function() {
 
 	describe('fetching user data', function() {
 		it('should not generate the user request if the URL is empty', function(done) {
-			var spy = sandbox.spy(component, '_onUserChange');
+			var spy = sandbox.spy(component, '_onUserChangeGetToken');
 			var stub = sandbox.stub(component, 'generateUserRequest');
 			component.getToken = getToken;
 			setTimeout(function() {
@@ -42,8 +42,19 @@ describe('<d2l-user-tile-auto>', function() {
 			});
 		});
 
+		it('should not generate the user request if token is empty', function(done) {
+			var spy = sandbox.spy(component, '_onUserChangeToken');
+			var stub = sandbox.stub(component, 'generateUserRequest');
+			component.userUrl = userUrl;
+			setTimeout(function() {
+				expect(spy.called).to.be.true;
+				expect(stub.called).to.be.false;
+				done();
+			});
+		});
+
 		it('should not generate the user request if getToken is not set', function(done) {
-			var spy = sandbox.spy(component, '_onUserChange');
+			var spy = sandbox.spy(component, '_onUserChangeGetToken');
 			var stub = sandbox.stub(component, 'generateUserRequest');
 			component.userUrl = userUrl;
 			setTimeout(function() {
@@ -55,7 +66,7 @@ describe('<d2l-user-tile-auto>', function() {
 
 		describe('generating user request', function() {
 			it('should generate the user request when both getToken and URL are set, and getToken returns a token', function(done) {
-				var spy = sandbox.spy(component, '_onUserChange');
+				var spy = sandbox.spy(component, '_onUserChangeGetToken');
 				var stub = sandbox.stub(component, 'generateUserRequest');
 				component.getToken = getToken;
 				component.userUrl = userUrl;
@@ -66,8 +77,20 @@ describe('<d2l-user-tile-auto>', function() {
 				});
 			});
 
+			it('should generate the user request when both token and URL are set', function(done) {
+				var spy = sandbox.spy(component, '_onUserChangeToken');
+				var stub = sandbox.stub(component, 'generateUserRequest');
+				component.token = token;
+				component.userUrl = userUrl;
+				setTimeout(function() {
+					expect(spy.called).to.be.true;
+					expect(stub.calledWith(userUrl, token, sinon.match({ background: true }))).to.be.true;
+					done();
+				});
+			});
+
 			it('should not generate the user request when getToken rejects', function(done) {
-				var spy = sandbox.spy(component, '_onUserChange');
+				var spy = sandbox.spy(component, '_onUserChangeGetToken');
 				var stub = sandbox.stub(component, 'generateUserRequest');
 				component.getToken = dontGetToken;
 				component.userUrl = userUrl;
@@ -79,7 +102,7 @@ describe('<d2l-user-tile-auto>', function() {
 			});
 
 			it('should not generate the user request when getToken returns something that is not a token', function(done) {
-				var spy = sandbox.spy(component, '_onUserChange');
+				var spy = sandbox.spy(component, '_onUserChangeGetToken');
 				var stub = sandbox.stub(component, 'generateUserRequest');
 				component.getToken = getNotToken;
 				component.userUrl = userUrl;
