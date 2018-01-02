@@ -5,7 +5,7 @@
   "scripts": {
     "postinstall": "polymer install --variants",
     "test": "npm run test:lint:js && npm run test:lint:wc && npm run test:unit:wct",
-    "test:lint:js": "eslint --ext .js,.html . test/ demo/",
+    "test:lint:js": "eslint *.html demo/*.html test/*.html",
     "test:lint:wc": "polymer lint --input d2l-user-tile-auto.html && polymer lint --input d2l-user-tile.html",
     "test:unit:wct": "cross-env LAUNCHPAD_BROWSERS=firefox wct",
     "test:unit:wct:local": "cross-env LAUNCHPAD_BROWSERS=firefox wct -p"
@@ -29,9 +29,8 @@
     "cross-env": "^5.0.0",
     "eslint": "^3.14.0",
     "eslint-config-brightspace": "^0.2.4",
-    "eslint-plugin-html": "^1.4.0",
+    "eslint-plugin-html": "^1.7.0",
     "polymer-cli": "^1.5.7",
-    "rimraf": "^2.5.2",
-    "web-component-tester": "^6.0.0"
+    "rimraf": "^2.5.2"
   }
 }
