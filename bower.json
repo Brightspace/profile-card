@@ -1,13 +1,8 @@
 {
   "name": "d2l-user-tile",
-  "homepage": "https://github.com/Brightspace/user-tile",
-  "authors": [
-    "Brightspace"
-  ],
   "description": "Polymer-based web components for the D2L User Tile",
-  "moduleType": [
-    "polymer"
-  ],
+  "main": "d2l-user-tile.html",
+  "homepage": "https://github.com/Brightspace/user-tile",
   "license": "Apache-2.0",
   "ignore": [
     "**/.*",
@@ -40,9 +35,6 @@
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0",
     "web-component-tester": "^6.0.0"
   },
-  "resolutions": {
-    "d2l-polymer-behaviors": "0.0.5 - 1"
-  },
   "variants": {
     "1.x": {
       "dependencies": {
@@ -54,10 +46,10 @@
         "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
         "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0",
         "web-component-tester": "^5.0.0"
-      },
-      "resolutions": {
-        "webcomponentsjs": "^0.7"
       }
     }
+  },
+  "resolutions": {
+    "webcomponentsjs": "^0.7"
   }
 }
