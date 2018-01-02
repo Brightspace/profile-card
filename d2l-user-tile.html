@@ -1,7 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../d2l-colors/d2l-colors.html">
 <link rel="import" href="../d2l-icons/d2l-icons.html">
-<link rel="import" href="../d2l-tile/d2l-tile.html">
+<link rel="import" href="../d2l-tile/d2l-image-tile.html">
 <link rel="import" href="../d2l-image/d2l-image.html">
 <link rel="import" href="icons.html">
 
@@ -59,14 +59,14 @@
 				border-radius: 6px;
 			}
 
-			d2l-tile {
-				--tile-image-height: 100px;
+			d2l-image-tile {
+				--d2l-image-tile-image-height: 100px;
 				min-height: 100%;
 				width: 100%;
 				margin: 0;
 			}
 
-			d2l-tile[loading] {
+			d2l-image-tile[loading] {
 				border: 1px var(--d2l-color-gypsum) solid;
 			}
 
@@ -90,7 +90,13 @@
 			}
 		</style>
 
-		<d2l-tile aria-label$="[[name]]" img-url="[[_getImgUrl(background, _placeholders)]]" style$="[[_createBackgroundStyle(backgroundColor, _placeholders)]]" hover-effect="low-lift" loading$="[[placeholders]]">
+		<d2l-image-tile
+			aria-label$="[[name]]"
+			img-url="[[_getImgUrl(background, _placeholders)]]"
+			style$="[[_createBackgroundStyle(backgroundColor, _placeholders)]]"
+			hover-effect="low-lift"
+			loading$="[[placeholders]]"
+		>
 			<div class="user-tile-avatar">
 				<template is="dom-if" if="[[!_hideIconPlaceholder(icon, _placeholders)]]">
 					<d2l-icon icon="navigation-48:profile" class="user-tile-default-icon"></d2l-icon>
@@ -106,7 +112,7 @@
 					<slot></slot>
 				</div>
 			</div>
-		</d2l-tile>
+		</d2l-image-tile>
 	</template>
 	<script>
 	'use strict';
@@ -163,7 +169,7 @@
 		},
 
 		_createBackgroundStyle: function(backgroundColor, placeholders) {
-			this.customStyle['--tile-image-background'] = (placeholders) ? '' : backgroundColor || '';
+			this.customStyle['--d2l-image-tile-image-background'] = (placeholders) ? '' : backgroundColor || '';
 			this.updateStyles();
 		},
 
