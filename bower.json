@@ -1,33 +1,55 @@
 {
   "name": "d2l-user-tile",
+  "description": "Polymer-based web components for the D2L User Tile",
+  "main": "d2l-user-tile.html",
   "homepage": "https://github.com/Brightspace/user-tile",
-  "authors": [
-    "Brightspace"
-  ],
-  "description": "D2L Profile Card",
-  "moduleType": [
-    "polymer"
-  ],
-  "license": "MIT",
+  "license": "Apache-2.0",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    ".editorconfig",
+    ".eslintrc.json",
+    ".gitignore",
+    ".travis.yml",
+    "CODEOWNERS",
+    "package.json",
+    "wct.conf.json"
   ],
   "dependencies": {
     "d2l-hm-constants-behavior": "git://github.com/Brightspace/d2l-hm-constants-behavior.git#^3.0.0",
+    "d2l-colors": "^2.4.0 || ^3.1.0",
     "d2l-icons": "^3.0.0",
-    "d2l-organization-hm-behavior": "git://github.com/Brightspace/organization-hm-behavior.git#^1.0.0",
-    "d2l-tile": "git://github.com/Brightspace/d2l-tile#^1.0.2",
     "d2l-image": "git://github.com/Brightspace/d2l-image#^1.1.0",
+    "d2l-organization-hm-behavior": "git://github.com/Brightspace/organization-hm-behavior.git#^1.0.0",
+    "d2l-tile": "^3.0.0",
     "d2l-user-profile-behavior": "git://github.com/Brightspace/user-profile-behavior#^2.1.0",
-    "polymer": "^1.8.0",
-    "d2l-colors": "^2.3.0"
+    "polymer": "1 - 2"
   },
   "devDependencies": {
-    "d2l-demo-template": "^0.0.12",
+    "d2l-typography": "^5.4.0 || ^6.0.0",
+    "iron-component-page": "PolymerElements/iron-component-page#1 - 2",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#1 - 2",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0",
     "web-component-tester": "^6.0.0"
+  },
+  "variants": {
+    "1.x": {
+      "dependencies": {
+        "d2l-colors": "^2.4.0",
+        "polymer": "^1.11.0"
+      },
+      "devDependencies": {
+        "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+        "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
+        "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0",
+        "web-component-tester": "^5.0.0"
+      }
+    }
+  },
+  "resolutions": {
+    "webcomponentsjs": "^0.7"
   }
 }

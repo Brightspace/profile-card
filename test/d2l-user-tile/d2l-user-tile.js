@@ -19,8 +19,8 @@ describe('<d2l-user-tile>', function() {
 	describe('given that the tile should render the appropriate data provided', function() {
 		describe('when the `icon` attribute is not provided', function() {
 			it('should render the default icon only', function() {
-				expect(component.querySelector('d2l-icon')).to.exist;
-				expect(component.querySelector('d2l-image')).to.not.exist;
+				expect(component.querySelector('.user-tile-avatar d2l-icon')).to.exist;
+				expect(component.querySelector('.user-tile-avatar d2l-image')).to.not.exist;
 			});
 		});
 
@@ -31,8 +31,8 @@ describe('<d2l-user-tile>', function() {
 			});
 
 			it('should render the custom icon only', function() {
-				expect(component.querySelector('d2l-icon')).to.not.exist;
-				expect(component.querySelector('d2l-image')).to.exist;
+				expect(component.querySelector('.user-tile-avatar d2l-icon')).to.not.exist;
+				expect(component.querySelector('.user-tile-avatar d2l-image')).to.exist;
 			});
 		});
 	});

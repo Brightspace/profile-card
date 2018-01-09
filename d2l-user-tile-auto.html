@@ -4,6 +4,9 @@
 <link rel="import" href="../d2l-user-profile-behavior/d2l-user-profile-behavior.html">
 <link rel="import" href="d2l-user-tile.html">
 
+<!--
+`d2l-user-tile-auto` is a Polymer-based web component for creating a user tile which automatically fills itself out when given a token and url.
+-->
 <dom-module id="d2l-user-tile-auto">
 	<template>
 		<style>
@@ -45,7 +48,12 @@
 				type: Object,
 				value: null
 			},
-			_doneRequests: Boolean
+			_doneRequests: Boolean,
+			_name: String,
+			_iconUrl: String,
+			_backgroundUrl: String,
+			_backgroundColor: String,
+			token: String
 		},
 
 		observers: [

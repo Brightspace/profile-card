@@ -1,46 +1,80 @@
 <head>
-	<script src="https://s.brightspace.com/lib/webcomponentsjs/0.7.21/webcomponents.min.js"></script>
-	<link rel="import" href="../../d2l-demo-template/d2l-demo-template.html">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+	<title>d2l-user-tile demo</title>
+	<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+	<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+	<link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+	<link rel="import" href="../../d2l-typography/d2l-typography.html">
 	<link rel="import" href="../d2l-user-tile.html">
+	<custom-style>
+		<style is="custom-style" include="demo-pages-shared-styles"></style>
+	</custom-style>
+	<custom-style include="d2l-typography">
+		<style is="custom-style" include="d2l-typography"></style>
+	</custom-style>
 	<style>
-		.d2l-demo-fixture {
-			display: flex;
-			flex-direction: row;
-			flex-wrap: wrap;
-			justify-content: center;
-		}
-		.d2l-demo-fixture > d2l-user-tile {
-			min-width: 400px;
-			height: 250px;
-			margin: 10px 10px;
+		p {
+			text-align: center;
 		}
 	</style>
 </head>
-<body>
-	<d2l-demo-template title="d2l-user-tile">
-		<div class="d2l-demo-fixture">
-			<d2l-user-tile id="slow-tile"></d2l-user-tile>
-			<d2l-user-tile id="placeholder-tile" placeholders></d2l-user-tile>
-			<d2l-user-tile
-				name="Abe Lincoln"
-				icon="abe.jpg">
-			</d2l-user-tile>
-			<d2l-user-tile
-				name="Joan of Arc"
-				grade="Grade 12"
-				icon="joan.jpg"
-				background-color="#0000FF">
-			</d2l-user-tile>
-		</div>
-	</d2l-demo-template>
+<body unresolved class="d2l-typography">
+	<div class="vertical-section-container centered">
+		<h3>Slow loading user tile</h3>
+		<demo-snippet>
+			<template>
+				<d2l-user-tile id="slow-tile">
+					<p>User tile content</p>
+				</d2l-user-tile>
+			</template>
+		</demo-snippet>
+
+		<h3>User tile with placeholder elements</h3>
+		<demo-snippet>
+			<template>
+				<d2l-user-tile id="placeholder-tile" placeholders>
+					<p>User tile content</p>
+				</d2l-user-tile>
+			</template>
+		</demo-snippet>
+
+		<h3>User tile with no image background</h3>
+		<demo-snippet>
+			<template>
+				<d2l-user-tile
+					name="Abe Lincoln"
+					icon="abe.jpg"
+				>
+					<p>User tile content</p>
+				</d2l-user-tile>
+			</template>
+		</demo-snippet>
+
+		<h3>User tile with color background</h3>
+		<demo-snippet>
+			<template>
+				<d2l-user-tile
+					name="Joan of Arc"
+					icon="joan.jpg"
+					background-color="#0000FF"
+				>
+					<p>User tile content</p>
+				</d2l-user-tile>
+			</template>
+		</demo-snippet>
+	</div>
 
 	<script>
 		'use strict';
 
-		var slowTile = document.getElementById('slow-tile');
-		var placeholderTile = document.getElementById('placeholder-tile');
+		var slowTile;
+		var placeholderTile;
 
 		setTimeout(function() {
+			slowTile = document.getElementById('slow-tile');
+			placeholderTile = document.getElementById('placeholder-tile');
+
 			slowTile.icon = 'abe.jpg';
 			placeholderTile.icon = 'joan.jpg';
 		}, 1000);
