@@ -23,7 +23,7 @@
     "d2l-colors": "^2.4.0 || ^3.1.0",
     "d2l-icons": "^3.0.0",
     "d2l-image": "git://github.com/Brightspace/d2l-image#^1.1.0",
-    "d2l-organization-hm-behavior": "git://github.com/Brightspace/organization-hm-behavior.git#^1.0.0",
+    "d2l-organization-hm-behavior": "git://github.com/Brightspace/organization-hm-behavior.git#^2.0.0",
     "d2l-tile": "^3.0.0",
     "d2l-user-profile-behavior": "git://github.com/Brightspace/user-profile-behavior#^2.1.0",
     "polymer": "1 - 2"
