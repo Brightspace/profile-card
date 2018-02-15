@@ -8,11 +8,15 @@
 `d2l-user-tile-auto` is a Polymer-based web component for creating a user tile which automatically fills itself out when given a token and url.
 -->
 <dom-module id="d2l-user-tile-auto">
-	<template>
+	<template strip-whitespace>
 		<style>
 			:host {
 				display: inline-block;
 				height: auto;
+			}
+
+			:host([hidden]) {
+				display: none;
 			}
 
 			d2l-user-tile {
@@ -61,7 +65,7 @@
 		],
 
 		behaviors: [
-			window.D2L.Hypermedia.OrganizationHMBehavior,
+			D2L.PolymerBehaviors.Hypermedia.OrganizationHMBehavior,
 			window.D2L.Hypermedia.HMConstantsBehavior,
 			window.D2L.UserProfileBehavior
 		],

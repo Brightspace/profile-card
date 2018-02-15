@@ -2,11 +2,10 @@
   "plugins": {
     "local": {
       "browsers": [{
-        "browserName": "firefox"
+        "browserName": "chrome"
       }]
     },
     "sauce": {
-      "disabled": true,
       "browsers": [
         {
           "browserName": "chrome",

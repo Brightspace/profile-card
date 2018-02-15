@@ -9,7 +9,7 @@
 @demo demo/index.html
 -->
 <dom-module id="d2l-user-tile">
-	<template>
+	<template strip-whitespace>
 		<style>
 			:host {
 				width: 350px;
@@ -19,6 +19,10 @@
 				display: block;
 				position: relative;
 				animation: fade-in 0.33s forwards;
+			}
+
+			:host([hidden]) {
+				display: none;
 			}
 
 			.user-tile-avatar {
@@ -71,10 +75,6 @@
 
 			d2l-image-tile[loading] {
 				border: 1px var(--d2l-color-gypsum) solid;
-			}
-
-			[hidden] {
-				display: none;
 			}
 
 			@keyframes fade-out-then-in {
@@ -172,8 +172,7 @@
 		},
 
 		_createBackgroundStyle: function(backgroundColor, placeholders) {
-			this.customStyle['--d2l-image-tile-image-background'] = (placeholders) ? '' : backgroundColor || '';
-			this.updateStyles();
+			this.updateStyles({'--d2l-image-tile-image-background': (placeholders) ? '' : backgroundColor || ''});
 		},
 
 		_onImageLoadFailure: function() {

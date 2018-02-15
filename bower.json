@@ -19,37 +19,32 @@
     "wct.conf.json"
   ],
   "dependencies": {
-    "d2l-hm-constants-behavior": "git://github.com/Brightspace/d2l-hm-constants-behavior.git#^3.0.0",
-    "d2l-colors": "^2.4.0 || ^3.1.0",
-    "d2l-icons": "^3.0.0",
-    "d2l-image": "git://github.com/Brightspace/d2l-image#^1.1.0",
-    "d2l-organization-hm-behavior": "git://github.com/Brightspace/organization-hm-behavior.git#^1.0.0",
-    "d2l-tile": "^3.0.0",
-    "d2l-user-profile-behavior": "git://github.com/Brightspace/user-profile-behavior#^2.1.0",
+    "d2l-hm-constants-behavior": "Brightspace/d2l-hm-constants-behavior#^5.2.0",
+    "d2l-colors": "^3.1.2",
+    "d2l-icons": "^4.9.0",
+    "d2l-image": "Brightspace/d2l-image#^2.0.0",
+    "d2l-organization-hm-behavior": "Brightspace/organization-hm-behavior#^2.0.1",
+    "d2l-tile": "^3.0.3",
+    "d2l-user-profile-behavior": "Brightspace/user-profile-behavior#^3.0.0",
     "polymer": "1 - 2"
   },
   "devDependencies": {
-    "d2l-typography": "^5.4.0 || ^6.0.0",
-    "iron-component-page": "PolymerElements/iron-component-page#1 - 2",
-    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#1 - 2",
-    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0",
-    "web-component-tester": "^6.0.0"
+    "d2l-typography": "^6.1.2",
+    "iron-component-page": "^2.0.0",
+    "iron-demo-helpers": "^2.0.0",
+    "web-component-tester": "^6.5.0"
   },
   "variants": {
     "1.x": {
       "dependencies": {
-        "d2l-colors": "^2.4.0",
-        "polymer": "^1.11.0"
+        "polymer": "^1.9.2"
       },
-      "devDependencies": {
-        "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
-        "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
-        "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0",
-        "web-component-tester": "^5.0.0"
+      "resolutions": {
+        "webcomponentsjs": "^0.7"
       }
     }
   },
   "resolutions": {
-    "webcomponentsjs": "^0.7"
+    "webcomponentsjs": "^1.0.0"
   }
 }
