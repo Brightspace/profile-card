@@ -1,19 +1,5 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
-
-# dependencies
 node_modules
-bower_components*
-bower-*
-
-# testing
-coverage
-
-# production
-build
-
-# misc
-.DS_Store
-.env
-npm-debug.log
-yarn.lock
-public/polymer-components.vulcanized.html
+bower_components
+bower_components-1.x
+bower-1.x.json
+package-lock.json

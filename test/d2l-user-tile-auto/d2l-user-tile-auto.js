@@ -113,14 +113,15 @@ describe('<d2l-user-tile-auto>', function() {
 		});
 	});
 
-	describe('content placeholders', function(done) {
+	describe('content placeholders', function() {
 		it('should set the placeholder property on the internal <d2l-user-tile>', function() {
-			component = fixture('with-placeholders');
 			var internalTile = component.$$('d2l-user-tile');
-			setTimeout(function() {
-				expect(internalTile.placeholders).to.be.true;
-				done();
-			}, 200);
+
+			component._doneRequests = false;
+			expect(internalTile.placeholders).to.be.true;
+
+			component._doneRequests = true;
+			expect(internalTile.placeholders).to.be.false;
 		});
 	});
 });

@@ -19,8 +19,8 @@ describe('<d2l-user-tile>', function() {
 	describe('given that the tile should render the appropriate data provided', function() {
 		describe('when the `icon` attribute is not provided', function() {
 			it('should render the default icon only', function() {
-				expect(component.querySelector('.user-tile-avatar d2l-icon')).to.exist;
-				expect(component.querySelector('.user-tile-avatar d2l-image')).to.not.exist;
+				expect(component.$$('.user-tile-avatar d2l-icon')).to.exist;
+				expect(component.$$('.user-tile-avatar d2l-image')).to.not.exist;
 			});
 		});
 
@@ -31,8 +31,8 @@ describe('<d2l-user-tile>', function() {
 			});
 
 			it('should render the custom icon only', function() {
-				expect(component.querySelector('.user-tile-avatar d2l-icon')).to.not.exist;
-				expect(component.querySelector('.user-tile-avatar d2l-image')).to.exist;
+				expect(component.$$('.user-tile-avatar d2l-icon')).to.not.exist;
+				expect(component.$$('.user-tile-avatar d2l-image')).to.exist;
 			});
 		});
 	});
@@ -46,16 +46,16 @@ describe('<d2l-user-tile>', function() {
 			it('should show a placeholder for the name when name is not set', function() {
 				var name = component.$$('.user-tile-name:not(.text-placeholder)');
 				var placeholder = component.$$('.user-tile-name.text-placeholder');
-				expect(name.getAttribute('hidden')).to.equal('');
-				expect(placeholder.getAttribute('hidden')).to.be.null;
+				expect(name.hasAttribute('hidden')).to.be.true;
+				expect(placeholder.hasAttribute('hidden')).to.be.false;
 			});
 
 			it('should hide the placeholder for the name when name is set', function() {
 				component.name = '';
 				var name = component.$$('.user-tile-name:not(.text-placeholder)');
 				var placeholder = component.$$('.user-tile-name.text-placeholder');
-				expect(name.getAttribute('hidden')).to.be.null;
-				expect(placeholder.getAttribute('hidden')).to.equal('');
+				expect(name.hasAttribute('hidden')).to.be.false;
+				expect(placeholder.hasAttribute('hidden')).to.be.true;
 			});
 		});
 	});
