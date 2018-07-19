@@ -2,7 +2,6 @@
 <link rel="import" href="../d2l-colors/d2l-colors.html">
 <link rel="import" href="../d2l-icons/d2l-icons.html">
 <link rel="import" href="../d2l-tile/d2l-image-tile.html">
-<link rel="import" href="../d2l-image/d2l-image.html">
 <link rel="import" href="icons.html">
 <!--
 `d2l-user-tile` is a Polymer-based web component for creating a user tile.
@@ -33,6 +32,11 @@
 				margin: -40px auto 19px auto;
 				background-color: var(--d2l-color-white);
 				overflow: hidden;
+			}
+
+			.user-tile-avatar > img {
+				width: 100%;
+				height: 100%;
 			}
 
 			.user-tile-items {
@@ -105,7 +109,7 @@
 					<d2l-icon icon="navigation-48:profile" class="user-tile-default-icon"></d2l-icon>
 				</template>
 				<template is="dom-if" if="[[_hideIconPlaceholder(icon, _placeholders)]]">
-					<d2l-image image-url="[[icon]]" token="[[token]]"></d2l-image>
+					<img src=[[icon]] />
 				</template>
 			</div>
 			<div class="user-tile-information-wrapper">
@@ -139,18 +143,10 @@
 				reflectToAttribute: 'true',
 				observer: '_updatePlaceholders'
 			},
-			token: {
-				type: String,
-				value: null
-			},
 			_placeholders: {
 				type: Boolean,
 				value: false
 			}
-		},
-
-		listeners: {
-			'd2l-image-failed-to-load': '_onImageLoadFailure'
 		},
 
 		_updatePlaceholders: function(placeholders, oldVal) {
@@ -173,10 +169,6 @@
 
 		_createBackgroundStyle: function(backgroundColor, placeholders) {
 			this.updateStyles({'--d2l-image-tile-image-background': (placeholders) ? '' : backgroundColor || ''});
-		},
-
-		_onImageLoadFailure: function() {
-			this.icon = null;
 		},
 
 		_getImgUrl: function(background, placeholders) {
