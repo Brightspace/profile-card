@@ -92,6 +92,7 @@ describe('<d2l-user-tile-auto>', function() {
 
 			it('sets the properties on the internal <d2l-user-tile> appropriately', function(done) {
 				var innerTile = component.$$('d2l-user-tile');
+				sandbox.stub(innerTile, '_onImageLoadFailure', function() {});
 				sandbox.stub(component, 'generateUserRequest', function() {
 					component._name = 'name';
 					component._iconUrl = 'iconUrl';
