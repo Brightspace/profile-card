@@ -100,7 +100,7 @@
 			hover-effect="low-lift"
 			loading$="[[placeholders]]"
 		>
-			<div class="user-tile-avatar">
+			<div class="user-tile-avatar" aria-hidden="true">
 				<template is="dom-if" if="[[!_hideIconPlaceholder(icon, _placeholders)]]">
 					<d2l-icon icon="navigation-48:profile" class="user-tile-default-icon"></d2l-icon>
 				</template>

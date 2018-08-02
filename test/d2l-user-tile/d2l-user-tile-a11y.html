@@ -37,6 +37,15 @@
 			</template>
 		</test-fixture>
 
-		<script src="d2l-user-tile.js"></script>
+		<script>
+			'use strict';
+
+			suite('d2l-user-tile-a11y', function() {
+				a11ySuite('basic');
+				a11ySuite('with-icon');
+				a11ySuite('with-user-data');
+				a11ySuite('with-placeholders');
+			});
+		</script>
 	</body>
 </html>
