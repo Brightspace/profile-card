@@ -90,7 +90,7 @@ describe('<d2l-user-card-auto>', function() {
 				});
 			});
 
-			it('sets the properties on the internal <d2l-user-tile> appropriately', function(done) {
+			it('sets the properties on the internal <d2l-user-card> appropriately', function(done) {
 				var innerTile = component.$$('d2l-user-card');
 				sandbox.stub(innerTile, '_onImageLoadFailure', function() {});
 				sandbox.stub(component, 'generateUserRequest', function() {

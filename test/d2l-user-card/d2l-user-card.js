@@ -2,7 +2,7 @@
 
 'use strict';
 
-describe('<d2l-user-tile>', function() {
+describe('<d2l-user-card>', function() {
 	var component;
 
 	beforeEach(function() {
