@@ -4,43 +4,43 @@
 		<meta charset="utf-8">
 		<script src="../../../webcomponentsjs/webcomponents-lite.js"></script>
 		<script src="../../../web-component-tester/browser.js"></script>
-		<link rel="import" href="../../d2l-user-tile.html">
+		<link rel="import" href="../../d2l-user-card.html">
 	</head>
 	<body>
 		<test-fixture id="basic">
 			<template>
-				<d2l-user-tile></d2l-user-tile>
+				<d2l-user-card></d2l-user-card>
 			</template>
 		</test-fixture>
 
 		<test-fixture id="with-icon">
 			<template>
-				<d2l-user-tile icon="testimage.jpg"></d2l-user-tile>
+				<d2l-user-card icon="testimage.jpg"></d2l-user-card>
 			</template>
 		</test-fixture>
 
 		<test-fixture id="with-user-data">
 			<template>
-				<d2l-user-tile
+				<d2l-user-card
 					icon="testimage.jpg"
 					name="Lisa Simpson"
 					grade="4th Grade"
 					style="background-color:#0000FF;">
-				</d2l-user-tile>
+				</d2l-user-card>
 			</template>
 		</test-fixture>
 
 		<test-fixture id="with-placeholders">
 			<template>
-				<d2l-user-tile placeholders>
-				</d2l-user-tile>
+				<d2l-user-card placeholders>
+				</d2l-user-card>
 			</template>
 		</test-fixture>
 
 		<script>
 			'use strict';
 
-			suite('d2l-user-tile-a11y', function() {
+			suite('d2l-user-card-a11y', function() {
 				a11ySuite('basic');
 				a11ySuite('with-icon');
 				a11ySuite('with-user-data');

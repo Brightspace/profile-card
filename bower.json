@@ -1,8 +1,8 @@
 {
-  "name": "d2l-user-tile",
-  "description": "Polymer-based web components for the D2L User Tile",
-  "main": "d2l-user-tile.html",
-  "homepage": "https://github.com/Brightspace/user-tile",
+  "name": "d2l-user-card",
+  "description": "Polymer-based web components for the D2L User Card",
+  "main": "d2l-user-card.html",
+  "homepage": "https://github.com/Brightspace/user-card",
   "license": "Apache-2.0",
   "ignore": [
     "**/.*",
@@ -24,7 +24,7 @@
     "d2l-icons": "^5.0.0",
     "d2l-image": "Brightspace/d2l-image#^2.0.0",
     "d2l-organization-hm-behavior": "Brightspace/organization-hm-behavior#^2.0.3",
-    "d2l-tile": "^3.0.3",
+    "d2l-card": "^4.1.17",
     "d2l-user-profile-behavior": "Brightspace/user-profile-behavior#^3.0.1",
     "polymer": "1 - 2"
   },
