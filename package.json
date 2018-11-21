@@ -7,7 +7,7 @@
     "test": "npm run lint && polymer test --skip-plugin sauce",
     "lint": "npm run lint:js && npm run lint:wc",
     "lint:js": "eslint --ext .js,.html .",
-    "lint:wc": "polymer lint -i d2l-user-tile.html d2l-user-card-auto.html ./demo/* ./test/*"
+    "lint:wc": "polymer lint -i d2l-user-tile.html d2l-user-card.html d2l-user-card-auto.html ./demo/* ./test/*"
   },
   "homepage": "https://github.com/Brightspace/user-tile",
   "repository": {
