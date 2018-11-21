@@ -2,12 +2,12 @@
 <link rel="import" href="../d2l-hm-constants-behavior/d2l-hm-constants-behavior.html">
 <link rel="import" href="../d2l-organization-hm-behavior/d2l-organization-hm-behavior.html">
 <link rel="import" href="../d2l-user-profile-behavior/d2l-user-profile-behavior.html">
-<link rel="import" href="d2l-user-tile.html">
+<link rel="import" href="d2l-user-card.html">
 
 <!--
-`d2l-user-tile-auto` is a Polymer-based web component for creating a user tile which automatically fills itself out when given a token and url.
+`d2l-user-card-auto` is a Polymer-based web component for creating a user card which automatically fills itself out when given a token and url.
 -->
-<dom-module id="d2l-user-tile-auto">
+<dom-module id="d2l-user-card-auto">
 	<template strip-whitespace>
 		<style>
 			:host {
@@ -27,7 +27,7 @@
 			}
 		</style>
 
-		<d2l-user-tile
+		<d2l-user-card
 			name="[[_name]]"
 			icon="[[_iconUrl]]"
 			background="[[_backgroundUrl]]"
@@ -36,12 +36,12 @@
 			placeholders="[[!_doneRequests]]"
 		>
 			<slot></slot>
-		</d2l-user-tile>
+		</d2l-user-card>
 	</template>
 	<script>
 	'use strict';
 	Polymer({
-		is: 'd2l-user-tile-auto',
+		is: 'd2l-user-card-auto',
 		properties: {
 			userUrl: {
 				type: String,

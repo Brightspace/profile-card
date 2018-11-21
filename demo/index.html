@@ -1,12 +1,12 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-	<title>d2l-user-tile demo</title>
+	<title>d2l-user-card demo</title>
 	<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 	<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
 	<link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
 	<link rel="import" href="../../d2l-typography/d2l-typography.html">
-	<link rel="import" href="../d2l-user-tile.html">
+	<link rel="import" href="../d2l-user-card.html">
 	<custom-style>
 		<style is="custom-style" include="demo-pages-shared-styles">
 		</style>
@@ -23,46 +23,46 @@
 </head>
 <body unresolved class="d2l-typography">
 	<div class="vertical-section-container centered">
-		<h3>Slow loading user tile</h3>
+		<h3>Slow loading user card</h3>
 		<demo-snippet>
 			<template>
-				<d2l-user-tile id="slow-tile">
-					<p>User tile content</p>
-				</d2l-user-tile>
+				<d2l-user-card id="slow-card">
+					<p>User card content</p>
+				</d2l-user-card>
 			</template>
 		</demo-snippet>
 
-		<h3>User tile with placeholder elements</h3>
+		<h3>User card with placeholder elements</h3>
 		<demo-snippet>
 			<template>
-				<d2l-user-tile id="placeholder-tile" placeholders>
-					<p>User tile content</p>
-				</d2l-user-tile>
+				<d2l-user-card id="placeholder-card" placeholders>
+					<p>User card content</p>
+				</d2l-user-card>
 			</template>
 		</demo-snippet>
 
-		<h3>User tile with no image background</h3>
+		<h3>User card with no image background</h3>
 		<demo-snippet>
 			<template>
-				<d2l-user-tile
+				<d2l-user-card
 					name="Abe Lincoln"
 					icon="abe.jpg"
 				>
-					<p>User tile content</p>
-				</d2l-user-tile>
+					<p>User card content</p>
+				</d2l-user-card>
 			</template>
 		</demo-snippet>
 
-		<h3>User tile with color background</h3>
+		<h3>User card with color background</h3>
 		<demo-snippet>
 			<template>
-				<d2l-user-tile
+				<d2l-user-card
 					name="Joan of Arc"
 					icon="joan.jpg"
 					background-color="#0000FF"
 				>
-					<p>User tile content</p>
-				</d2l-user-tile>
+					<p>User card content</p>
+				</d2l-user-card>
 			</template>
 		</demo-snippet>
 	</div>
@@ -70,25 +70,25 @@
 	<script>
 		'use strict';
 
-		var slowTile;
-		var placeholderTile;
+		var slowCard;
+		var placeholderCard;
 
 		setTimeout(function() {
-			slowTile = document.getElementById('slow-tile');
-			placeholderTile = document.getElementById('placeholder-tile');
+			slowCard = document.getElementById('slow-card');
+			placeholderCard = document.getElementById('placeholder-card');
 
-			slowTile.icon = 'abe.jpg';
-			placeholderTile.icon = 'joan.jpg';
+			slowCard.icon = 'abe.jpg';
+			placeholderCard.icon = 'joan.jpg';
 		}, 1000);
 
 		setTimeout(function() {
-			slowTile.name = 'Slowly-Loading Name';
-			placeholderTile.name = 'Slow Placeholdered Name';
+			slowCard.name = 'Slowly-Loading Name';
+			placeholderCard.name = 'Slow Placeholdered Name';
 		}, 2000);
 
 		setTimeout(function() {
-			slowTile.background = 'abe.jpg';
-			placeholderTile.background = 'joan.jpg';
+			slowCard.background = 'abe.jpg';
+			placeholderCard.background = 'joan.jpg';
 		}, 5000);
 	</script>
 </body>

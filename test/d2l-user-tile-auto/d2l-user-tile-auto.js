@@ -2,7 +2,7 @@
 
 'use strict';
 
-describe('<d2l-user-tile-auto>', function() {
+describe('<d2l-user-card-auto>', function() {
 	var component,
 		sandbox,
 		userUrl = 'https://example.com',

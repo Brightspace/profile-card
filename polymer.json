@@ -4,6 +4,6 @@
   },
   "sources": [
     "d2l-user-tile.html",
-    "d2l-user-tile-auto.html"
+    "d2l-user-card-auto.html"
   ]
 }

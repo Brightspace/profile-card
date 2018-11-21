@@ -24,7 +24,7 @@
     "d2l-icons": "^5.0.0",
     "d2l-image": "Brightspace/d2l-image#^2.0.0",
     "d2l-organization-hm-behavior": "Brightspace/organization-hm-behavior#^2.0.3",
-    "d2l-tile": "^3.0.3",
+    "d2l-card": "^4.1.17",
     "d2l-user-profile-behavior": "Brightspace/user-profile-behavior#^3.0.1",
     "polymer": "1 - 2"
   },
