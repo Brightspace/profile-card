@@ -1,7 +1,7 @@
 d2l-user-card
 =============
 
-[![Build Status](https://travis-ci.org/Brightspace/user-card.svg?branch=master)](https://travis-ci.org/Brightspace/user-card)
+[![Build Status](https://travis-ci.org/Brightspace/user-tile.svg?branch=master)](https://travis-ci.org/Brightspace/user-tile)
 
 A [Polymer](https://www.polymer-project.org)-based web component for displaying a profile's information.
 
