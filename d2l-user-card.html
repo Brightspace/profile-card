@@ -144,8 +144,7 @@
 			active$="[[!_placeholders]]"
 		>
 			<div slot="header">
-				<img hidden$="[[!_showBackgroundImage(background, _placeholders)]]" class="user-tile-header" src="[[_getImgUrl(background, _placeholders)]]"></img>
-				<div class="user-tile-background" style$="background-color: [[backgroundColor]]" hidden$="[[!_showBackgroundColor(background, _placeholders, backgroundColor)]]"></div>
+				<div class="user-tile-background" style$="[[_getBackgroundStyle(background, backgroundColor)]]" hidden$="[[_placeholders]]"></div>
 				<div class="loading d2l-user-card-loading-shimmer" hidden$="[[!_placeholders]]"></div>
 			</div>
 			<div slot="badge" class="user-tile-avatar" aria-hidden="true">
@@ -171,7 +170,10 @@
 	Polymer({
 		is: 'd2l-user-card',
 		properties: {
-			background: String,
+			background: {
+				type: String,
+				value: null
+			},
 			backgroundColor: {
 				type: String,
 				value: 'white'
@@ -226,16 +228,10 @@
 			this.icon = null;
 		},
 
-		_getImgUrl: function(background, placeholders) {
-			return placeholders ? '' : background;
-		},
-
-		_showBackgroundColor: function(background, placeholders) {
-			return !background && !placeholders;
-		},
-
-		_showBackgroundImage: function(background, placeholders) {
-			return background && !placeholders;
+		_getBackgroundStyle: function(background, backgroundColor) {
+			return background ?
+				'background: url(' + background + '); background-size: cover; background-position: center;' :
+				'background-color: ' + backgroundColor + ';';
 		}
 	});
 	</script>
