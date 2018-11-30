@@ -3,6 +3,7 @@
 <link rel="import" href="../d2l-icons/d2l-icons.html">
 <link rel="import" href="../d2l-image/d2l-image.html">
 <link rel="import" href="../d2l-card/d2l-card.html">
+<link rel="import" href="../d2l-card/d2l-card-loading-shimmer.html">
 <link rel="import" href="icons.html">
 <!--
 `d2l-user-card` is a Polymer-based web component for creating a user card.
@@ -103,31 +104,6 @@
 			[hidden] {
 				display: none;
 			}
-
-			@keyframes loadingShimmer {
-				0% { transform: translate3d(-100%, 0, 0); }
-				100% { transform: translate3d(100%, 0, 0); }
-			}
-
-			.d2l-user-card-loading-shimmer {
-				background-color: var(--d2l-color-regolith);
-				border-radius: 7px 7px 0 0;
-				box-shadow: inset 0 -1px 0 0 var(--d2l-color-gypsum);
-				overflow: hidden;
-				position: relative;
-			}
-
-			.d2l-user-card-loading-shimmer::after {
-				animation: loadingShimmer 1.5s ease-in-out infinite;
-				background: linear-gradient(90deg, rgba(249, 250, 251, 0.1), rgba(114, 119, 122, 0.1), rgba(249, 250, 251, 0.1));
-				background-color: var(--d2l-color-regolith);
-				content: '';
-				height: 100%;
-				left: 0;
-				position: absolute;
-				top: 0;
-				width: 100%;
-			}
 		</style>
 
 		<d2l-card
@@ -135,8 +111,10 @@
 			loading$="[[_placeholders]]"
 			href="javascript:void(0);"
 		>
+			<d2l-card-loading-shimmer loading="[[ _placeholders ]]" slot="header">
+				<div class="user-tile-background" style$="[[_getBackgroundStyle(background, backgroundColor)]]"></div>
+			</d2l-card-loading-shimmer>
 			<div slot="header">
-				<div class="user-tile-background" style$="[[_getBackgroundStyle(background, backgroundColor)]]" hidden$="[[_placeholders]]"></div>
 				<div class="loading d2l-user-card-loading-shimmer" hidden$="[[!_placeholders]]"></div>
 			</div>
 			<div slot="badge" class="user-tile-avatar" aria-hidden="true">
