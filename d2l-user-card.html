@@ -69,6 +69,10 @@
 				padding-bottom: 10px;
 			}
 
+			.user-tile-background {
+				background-color: var(--d2l-color-sylvite);
+			}
+
 			.text-placeholder {
 				background-color: var(--d2l-color-sylvite);
 				width: 150px;
@@ -146,7 +150,7 @@
 			},
 			backgroundColor: {
 				type: String,
-				value: 'white'
+				value: null
 			},
 			icon: {
 				type: String,
@@ -199,9 +203,12 @@
 		},
 
 		_getBackgroundStyle: function(background, backgroundColor) {
-			return background ?
-				'background: url(' + background + '); background-size: cover; background-position: center;' :
-				'background-color: ' + backgroundColor + ';';
+			if (background) {
+				return 'background: url(' + background + '); background-size: cover; background-position: center;';
+			}
+			if (backgroundColor) {
+				return 'background-color: ' + backgroundColor + ';';
+			}
 		}
 	});
 	</script>
