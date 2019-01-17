@@ -5,8 +5,8 @@
   "scripts": {
     "postinstall": "polymer install --variants",
     "test": "npm run lint && polymer test --skip-plugin sauce",
-    "lint": "npm run lint:js && npm run lint:wc",
-    "lint:js": "eslint --ext .js,.html .",
+    "lint": "npm run lint:html && npm run lint:wc",
+    "lint:html": "eslint --ext .js,.html .",
     "lint:wc": "polymer lint ./*.js ./demo/*.js"
   },
   "homepage": "https://github.com/Brightspace/user-tile",
