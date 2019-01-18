@@ -143,7 +143,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-user-card">
 			</div>
 		</d2l-card>
 	</template>
-	
+
 </dom-module>`;
 
 document.head.appendChild($_documentContainer.content);

@@ -15,6 +15,14 @@
 			</template>
 		</test-fixture>
 
-		<script src="./d2l-user-card-auto.js"></script>
+		<script type="module">
+			import '../../d2l-user-card-auto.js';
+			import { a11ySuite } from 'wct-browser-legacy/a11ySuite.js';
+
+			suite('d2l-user-card-auto-a11y', function() {
+				console.log(a11ySuite);
+				a11ySuite('basic');
+			});
+		</script>
 	</body>
 </html>
