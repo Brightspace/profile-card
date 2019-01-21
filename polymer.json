@@ -4,7 +4,7 @@
     "rules": ["polymer-3"]
   },
   "sources": [
-    "d2l-user-card.html",
-    "d2l-user-card-auto.html"
+    "d2l-user-card.js",
+    "d2l-user-card-auto.js"
   ]
 }
