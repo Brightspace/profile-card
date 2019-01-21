@@ -2,27 +2,53 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 	<title>d2l-user-card demo</title>
-	<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-	<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
-	<link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-	<link rel="import" href="../../d2l-typography/d2l-typography.html">
-	<link rel="import" href="../d2l-user-card.html">
-	<custom-style>
+	<script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+	<script type="module" src="../d2l-user-card.js"></script>
+	<!-- FIXME(polymer-modulizer)
+		These imperative modules that innerHTML your HTML are
+		a hacky way to be sure that any mixins in included style
+		modules are ready before any elements that reference them are
+		instantiated, otherwise the CSS @apply mixin polyfill won't be
+		able to expand the underlying CSS custom properties.
+		See: https://github.com/Polymer/polymer-modulizer/issues/154
+		-->
+	<script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<custom-style>
 		<style is="custom-style" include="demo-pages-shared-styles">
 		</style>
-	</custom-style>
-	<custom-style include="d2l-typography">
+	</custom-style>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
+	<script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<custom-style include="d2l-typography">
 		<style is="custom-style" include="d2l-typography">
 		</style>
-	</custom-style>
-	<style>
+	</custom-style>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
+	<script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<style>
 		p {
 			text-align: center;
 		}
-	</style>
+	</style>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
 </head>
 <body unresolved class="d2l-typography">
-	<div class="vertical-section-container centered">
+	<script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
 		<h3>Slow loading user card</h3>
 		<demo-snippet>
 			<template>
@@ -35,7 +61,7 @@
 		<h3>User card with placeholder elements</h3>
 		<demo-snippet>
 			<template>
-				<d2l-user-card id="placeholder-card" placeholders>
+				<d2l-user-card id="placeholder-card" placeholders="">
 					<p>User card content</p>
 				</d2l-user-card>
 			</template>
@@ -44,10 +70,7 @@
 		<h3>User card with no image background</h3>
 		<demo-snippet>
 			<template>
-				<d2l-user-card
-					name="Abe Lincoln"
-					icon="abe.jpg"
-				>
+				<d2l-user-card name="Abe Lincoln" icon="abe.jpg">
 					<p>User card content</p>
 				</d2l-user-card>
 			</template>
@@ -56,39 +79,41 @@
 		<h3>User card with color background</h3>
 		<demo-snippet>
 			<template>
-				<d2l-user-card
-					name="Joan of Arc"
-					icon="joan.jpg"
-					background-color="#0000FF"
-				>
+				<d2l-user-card name="Joan of Arc" icon="joan.jpg" background-color="#0000FF">
 					<p>User card content</p>
 				</d2l-user-card>
 			</template>
 		</demo-snippet>
-	</div>
+	</div>`;
 
-	<script>
-		'use strict';
+document.body.appendChild($_documentContainer.content);
+</script>
 
-		var slowCard;
-		var placeholderCard;
+	<script type="module">
+import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+import '@polymer/iron-demo-helpers/demo-snippet.js';
+import 'd2l-typography/d2l-typography.js';
+import '../d2l-user-card.js';
 
-		setTimeout(function() {
-			slowCard = document.getElementById('slow-card');
-			placeholderCard = document.getElementById('placeholder-card');
+var slowCard;
+var placeholderCard;
 
-			slowCard.icon = 'abe.jpg';
-			placeholderCard.icon = 'joan.jpg';
-		}, 1000);
+setTimeout(function() {
+	slowCard = document.getElementById('slow-card');
+	placeholderCard = document.getElementById('placeholder-card');
 
-		setTimeout(function() {
-			slowCard.name = 'Slowly-Loading Name';
-			placeholderCard.name = 'Slow Placeholdered Name';
-		}, 2000);
+	slowCard.icon = 'abe.jpg';
+	placeholderCard.icon = 'joan.jpg';
+}, 1000);
 
-		setTimeout(function() {
-			slowCard.background = 'abe.jpg';
-			placeholderCard.background = 'joan.jpg';
-		}, 5000);
-	</script>
+setTimeout(function() {
+	slowCard.name = 'Slowly-Loading Name';
+	placeholderCard.name = 'Slow Placeholdered Name';
+}, 2000);
+
+setTimeout(function() {
+	slowCard.background = 'abe.jpg';
+	placeholderCard.background = 'joan.jpg';
+}, 5000);
+</script>
 </body>

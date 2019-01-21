@@ -1,13 +1,14 @@
 /* global describe, beforeEach, it, expect, fixture */
 
-'use strict';
+import '@polymer/polymer/polymer-legacy.js';
+import {flush} from '@polymer/polymer/lib/utils/flush.js';
 
 describe('<d2l-user-card>', function() {
 	var component;
 
 	beforeEach(function() {
 		component = fixture('basic');
-		Polymer.dom.flush();
+		flush();
 	});
 
 	describe('smoke tests', function() {
@@ -27,7 +28,7 @@ describe('<d2l-user-card>', function() {
 		describe('when the `icon` attribute is provided for a valid image', function() {
 			beforeEach(function() {
 				component = fixture('with-icon');
-				Polymer.dom.flush();
+				flush();
 			});
 
 			it('should render the custom icon only', function() {

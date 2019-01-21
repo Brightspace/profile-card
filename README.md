@@ -19,8 +19,7 @@ Run tests:
 npm test
 ```
 
-To see a demo of the `user-card` in action, you can use [Polymer CLI's](https://www.npmjs.com/package/polymer-cli) `serve` command. Run `polymer serve` and navigate to [http://localhost:8000/components/d2l-user-card/demo/index.html](http://localhost:8000/components/d2l-user-card/demo/index.html).
-
+To see a demo of the `user-card` in action, you can use [Polymer CLI's](https://www.npmjs.com/package/polymer-cli) `serve` command. Run `polymer serve` and go to the component url (you'll need to append `/demo/index.html` to the url to get to the demo page)
 ## Usage
 
 There are two variants of the card - `d2l-user-card` and `d2l-user-card-auto`. Both variants of the card support the common attribute `placeholders`, a boolean attribute which will render placeholder elements in place of missing data when true.

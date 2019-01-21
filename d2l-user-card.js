@@ -1,16 +1,25 @@
-<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../d2l-colors/d2l-colors.html">
-<link rel="import" href="../d2l-icons/d2l-icons.html">
-<link rel="import" href="../d2l-image/d2l-image.html">
-<link rel="import" href="../d2l-card/d2l-card.html">
-<link rel="import" href="../d2l-card/d2l-card-loading-shimmer.html">
-<link rel="import" href="icons.html">
-<!--
+/**
 `d2l-user-card` is a Polymer-based web component for creating a user card.
 @demo demo/index.html
--->
-<dom-module id="d2l-user-card">
-	<template strip-whitespace>
+*/
+/*
+  FIXME(polymer-modulizer): the above comments were extracted
+  from HTML and may be out of place here. Review them and
+  then delete this comment!
+*/
+import '@polymer/polymer/polymer-legacy.js';
+
+import 'd2l-colors/d2l-colors.js';
+import 'd2l-icons/d2l-icons.js';
+import 'd2l-image/d2l-image.js';
+import 'd2l-card/d2l-card.js';
+import 'd2l-card/d2l-card-loading-shimmer.js';
+import './icons.js';
+import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<dom-module id="d2l-user-card">
+	<template strip-whitespace="">
 		<style>
 			:host {
 				width: 350px;
@@ -110,11 +119,7 @@
 			}
 		</style>
 
-		<d2l-card
-			aria-label$="[[name]]"
-			loading$="[[_placeholders]]"
-			href="javascript:void(0);"
-		>
+		<d2l-card aria-label$="[[name]]" loading$="[[_placeholders]]" href="javascript:void(0);">
 			<d2l-card-loading-shimmer loading="[[ _placeholders ]]" slot="header">
 				<div class="user-tile-background" style$="[[_getBackgroundStyle(background, backgroundColor)]]"></div>
 			</d2l-card-loading-shimmer>
@@ -138,78 +143,78 @@
 			</div>
 		</d2l-card>
 	</template>
-	<script>
-	'use strict';
 
-	Polymer({
-		is: 'd2l-user-card',
-		properties: {
-			background: {
-				type: String,
-				value: null
-			},
-			backgroundColor: {
-				type: String,
-				value: null
-			},
-			icon: {
-				type: String,
-				value: null
-			},
-			name: {
-				type: String,
-				value: null
-			},
-			token: {
-				type: String,
-				value: null
-			},
-			placeholders: {
-				type: Boolean,
-				value: false,
-				reflectToAttribute: 'true',
-				observer: '_updatePlaceholders'
-			},
-			_placeholders: {
-				type: Boolean,
-				value: false
-			}
+</dom-module>`;
+
+document.head.appendChild($_documentContainer.content);
+
+Polymer({
+	is: 'd2l-user-card',
+	properties: {
+		background: {
+			type: String,
+			value: null
 		},
-
-		listeners: {
-			'd2l-image-failed-to-load': '_onImageLoadFailure'
+		backgroundColor: {
+			type: String,
+			value: null
 		},
-
-		_updatePlaceholders: function(placeholders, oldVal) {
-			if (oldVal || placeholders) {
-				this.setAttribute('prev-placeholders', true);
-			}
-
-			setTimeout(function() {
-				this._placeholders = placeholders;
-			}.bind(this), 160);
+		icon: {
+			type: String,
+			value: null
 		},
-
-		_hideIconPlaceholder: function(icon, placeholders) {
-			return !placeholders && !!icon;
+		name: {
+			type: String,
+			value: null
 		},
-
-		_hideNamePlaceholder: function(placeholders, name) {
-			return !placeholders && 'string' === typeof name;
+		token: {
+			type: String,
+			value: null
 		},
-
-		_onImageLoadFailure: function() {
-			this.icon = null;
+		placeholders: {
+			type: Boolean,
+			value: false,
+			reflectToAttribute: 'true',
+			observer: '_updatePlaceholders'
 		},
-
-		_getBackgroundStyle: function(background, backgroundColor) {
-			if (background) {
-				return 'background: url(' + background + '); background-size: cover; background-position: center;';
-			}
-			if (backgroundColor) {
-				return 'background-color: ' + backgroundColor + ';';
-			}
+		_placeholders: {
+			type: Boolean,
+			value: false
 		}
-	});
-	</script>
-</dom-module>
+	},
+
+	listeners: {
+		'd2l-image-failed-to-load': '_onImageLoadFailure'
+	},
+
+	_updatePlaceholders: function(placeholders, oldVal) {
+		if (oldVal || placeholders) {
+			this.setAttribute('prev-placeholders', true);
+		}
+
+		setTimeout(function() {
+			this._placeholders = placeholders;
+		}.bind(this), 160);
+	},
+
+	_hideIconPlaceholder: function(icon, placeholders) {
+		return !placeholders && !!icon;
+	},
+
+	_hideNamePlaceholder: function(placeholders, name) {
+		return !placeholders && 'string' === typeof name;
+	},
+
+	_onImageLoadFailure: function() {
+		this.icon = null;
+	},
+
+	_getBackgroundStyle: function(background, backgroundColor) {
+		if (background) {
+			return 'background: url(' + background + '); background-size: cover; background-position: center;';
+		}
+		if (backgroundColor) {
+			return 'background-color: ' + backgroundColor + ';';
+		}
+	}
+});
