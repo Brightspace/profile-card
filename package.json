@@ -5,6 +5,7 @@
     "user",
     "tile"
   ],
+  "version": "6.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/Brightspace/user-tile.git"
@@ -34,7 +35,6 @@
     "polymer-cli": "^1.9.5",
     "wct-browser-legacy": "^1.0.1"
   },
-  "version": "6.0.1",
   "resolutions": {
     "inherits": "2.0.3",
     "samsam": "1.1.3",
