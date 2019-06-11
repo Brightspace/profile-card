@@ -131,7 +131,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-user-card">
 					<d2l-icon icon="navigation-48:profile" class="user-tile-default-icon"></d2l-icon>
 				</template>
 				<template is="dom-if" if="[[_hideIconPlaceholder(icon, _placeholders)]]">
-					<d2l-image image-url="[[icon]]" token="[[token]]"></d2l-image>
+					<d2l-image image-url="[[icon]]" token="[[token]]" alternate-text=""></d2l-image>
 				</template>
 			</div>
 			<div class="user-tile-information-wrapper" slot="content">
