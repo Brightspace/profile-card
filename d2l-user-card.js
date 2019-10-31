@@ -119,13 +119,10 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-user-card">
 			}
 		</style>
 
-		<d2l-card aria-label$="[[name]]" loading$="[[_placeholders]]" href="javascript:void(0);">
+		<d2l-card title$="[[name]]" loading$="[[_placeholders]]" href="javascript:void(0);">
 			<d2l-card-loading-shimmer loading="[[ _placeholders ]]" slot="header">
 				<div class="user-tile-background" style$="[[_getBackgroundStyle(background, backgroundColor)]]"></div>
 			</d2l-card-loading-shimmer>
-			<div slot="header">
-				<div class="loading d2l-user-card-loading-shimmer" hidden$="[[!_placeholders]]"></div>
-			</div>
 			<div slot="badge" class="user-tile-avatar" aria-hidden="true">
 				<template is="dom-if" if="[[!_hideIconPlaceholder(icon, _placeholders)]]">
 					<d2l-icon icon="navigation-48:profile" class="user-tile-default-icon"></d2l-icon>
