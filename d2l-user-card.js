@@ -119,7 +119,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-user-card">
 			}
 		</style>
 
-		<d2l-card title$="[[name]]" loading$="[[_placeholders]]" href="javascript:void(0);">
+		<d2l-card text$="[[name]]" loading$="[[_placeholders]]" href="javascript:void(0);">
 			<d2l-card-loading-shimmer loading="[[ _placeholders ]]" slot="header">
 				<div class="user-tile-background" style$="[[_getBackgroundStyle(background, backgroundColor)]]"></div>
 			</d2l-card-loading-shimmer>
