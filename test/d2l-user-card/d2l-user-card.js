@@ -20,7 +20,7 @@ describe('<d2l-user-card>', function() {
 	describe('given that the tile should render the appropriate data provided', function() {
 		describe('when the `icon` attribute is not provided', function() {
 			it('should render the default icon only', function() {
-				expect(component.$$('.user-tile-avatar d2l-icon')).to.exist;
+				expect(component.$$('.user-tile-avatar d2l-icon-custom')).to.exist;
 				expect(component.$$('.user-tile-avatar d2l-image')).to.not.exist;
 			});
 		});
@@ -32,7 +32,7 @@ describe('<d2l-user-card>', function() {
 			});
 
 			it('should render the custom icon only', function() {
-				expect(component.$$('.user-tile-avatar d2l-icon')).to.not.exist;
+				expect(component.$$('.user-tile-avatar d2l-icon-custom')).to.not.exist;
 				expect(component.$$('.user-tile-avatar d2l-image')).to.exist;
 			});
 		});
