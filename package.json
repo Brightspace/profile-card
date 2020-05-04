@@ -43,8 +43,7 @@
   },
   "main": "d2l-user-card.js",
   "dependencies": {
-    "d2l-colors": "BrightspaceUI/colors#semver:^4",
-    "d2l-icons": "BrightspaceUI/icons#semver:^6",
+    "@brightspace-ui/core": "^1.35.0",
     "d2l-image": "Brightspace/d2l-image#semver:^3",
     "d2l-organization-hm-behavior": "Brightspace/organization-hm-behavior#semver:^3",
     "d2l-card": "BrightspaceUI/card#semver:^6",
