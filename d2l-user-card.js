@@ -147,6 +147,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-user-card">
 					<slot></slot>
 				</div>
 			</div>
+			<slot name="footer" slot="footer"></slot>
 		</d2l-card>
 	</template>
 
