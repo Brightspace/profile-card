@@ -16,6 +16,7 @@
     "lint": "npm run lint:wc && npm run lint:js",
     "lint:js": "eslint . --ext .js,.html test/**/*.js test/**/*.html demo/**/*.js demo/**/*.html",
     "lint:wc": "polymer lint -i \"./*\" \"test\" \"demo\"",
+    "lint:lit-analyzer": "lit-analyzer src/**/* test/**/* stories/web-components/**/* --strict --rules.no-unknown-tag-name off --rules.no-unknown-event error --maxWarnings 0",
     "test": "npm run lint && polymer test --skip-plugin sauce"
   },
   "bugs": {
@@ -48,6 +49,7 @@
     "d2l-organization-hm-behavior": "Brightspace/organization-hm-behavior#semver:^3",
     "d2l-card": "BrightspaceUI/card#semver:^6",
     "d2l-user-profile-behavior": "Brightspace/user-profile-behavior#semver:^4",
-    "@polymer/polymer": "^3.0.0"
+    "@polymer/polymer": "^3.0.0",
+    "lit-element": "^2.2.1"
   }
 }
