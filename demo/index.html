@@ -4,6 +4,7 @@
 	<title>d2l-user-card demo</title>
 	<script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
 	<script type="module" src="../d2l-user-card.js"></script>
+	<script type="module" src="../d2l-user-card-lit.js"></script>
 	<!-- FIXME(polymer-modulizer)
 		These imperative modules that innerHTML your HTML are
 		a hacky way to be sure that any mixins in included style
@@ -50,38 +51,58 @@ const $_documentContainer = document.createElement('template');
 
 $_documentContainer.innerHTML = `<div class="vertical-section-container centered">
 		<h3>Slow loading user card</h3>
-		<demo-snippet>
-			<template>
-				<d2l-user-card id="slow-card">
-					<p>User card content</p>
-				</d2l-user-card>
-			</template>
-		</demo-snippet>
+			<demo-snippet>
+				<template>
+					<div style="display: flex">
+						<d2l-user-card id="slow-card">
+							<p>User card content</p>
+						</d2l-user-card>
+						<d2l-user-card-lit id="slow-card-lit">
+							<p>User card content</p>
+						</d2l-user-card-lit>
+					</div>
+				</template>
+			</demo-snippet>
 
 		<h3>User card with placeholder elements</h3>
 		<demo-snippet>
 			<template>
-				<d2l-user-card id="placeholder-card" placeholders="">
-					<p>User card content</p>
-				</d2l-user-card>
+				<div style="display: flex">
+					<d2l-user-card id="placeholder-card" placeholders="">
+						<p>User card content</p>
+					</d2l-user-card>
+					<d2l-user-card-lit id="placeholder-card-lit" placeholders="">
+						<p>User card content</p>
+					</d2l-user-card-lit>
+				</div>
 			</template>
 		</demo-snippet>
 
 		<h3>User card with no image background</h3>
 		<demo-snippet>
 			<template>
-				<d2l-user-card name="Abe Lincoln" icon="abe.jpg">
-					<p>User card content</p>
-				</d2l-user-card>
+				<div style="display: flex">
+					<d2l-user-card name="Abe Lincoln" icon="abe.jpg">
+						<p>User card content</p>
+					</d2l-user-card>
+					<d2l-user-card-lit name="Abe Lincoln" icon="abe.jpg">
+						<p>User card content</p>
+					</d2l-user-card-lit>
+				</div>
 			</template>
 		</demo-snippet>
 
 		<h3>User card with color background</h3>
 		<demo-snippet>
 			<template>
-				<d2l-user-card name="Joan of Arc" icon="joan.jpg" background-color="#0000FF">
-					<p>User card content</p>
-				</d2l-user-card>
+				<div style="display: flex">
+					<d2l-user-card name="Joan of Arc" icon="joan.jpg" background-color="#0000FF">
+						<p>User card content</p>
+					</d2l-user-card>
+					<d2l-user-card-lit name="Joan of Arc" icon="joan.jpg" background-color="#0000FF">
+						<p>User card content</p>
+					</d2l-user-card-lit>
+				</div>
 			</template>
 		</demo-snippet>
 	</div>`;
@@ -97,23 +118,38 @@ import '../d2l-user-card.js';
 
 var slowCard;
 var placeholderCard;
+var slowCardLit;
+var placeholderCardLit;
 
 setTimeout(function() {
 	slowCard = document.getElementById('slow-card');
 	placeholderCard = document.getElementById('placeholder-card');
+	slowCardLit = document.getElementById('slow-card-lit');
+	placeholderCardLit = document.getElementById('placeholder-card-lit');
 
 	slowCard.icon = 'abe.jpg';
 	placeholderCard.icon = 'joan.jpg';
+	slowCardLit.icon = 'abe.jpg';
+	placeholderCardLit.icon = 'joan.jpg';
 }, 1000);
 
 setTimeout(function() {
 	slowCard.name = 'Slowly-Loading Name';
 	placeholderCard.name = 'Slow Placeholdered Name';
+
+	slowCardLit.name = 'Slowly-Loading Name';
+	placeholderCardLit.name = 'Slow Placeholdered Name';
+
 }, 2000);
 
 setTimeout(function() {
 	slowCard.background = 'abe.jpg';
 	placeholderCard.background = 'joan.jpg';
+	slowCardLit.background = 'abe.jpg';
+	placeholderCardLit.background = 'joan.jpg';
+
+	placeholderCardLit.placeholders = false;
+	placeholderCard.placeholders = false;
 }, 5000);
 </script>
 </body>
