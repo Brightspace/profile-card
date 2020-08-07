@@ -12,6 +12,7 @@ import 'd2l-image/d2l-image.js';
 import 'd2l-card/d2l-card.js';
 import 'd2l-card/d2l-card-loading-shimmer.js';
 import { LitElement, css, html } from 'lit-element';
+import { ifDefined } from 'lit-html/directives/if-defined';
 
 export class UserTile extends LitElement {
 	static get styles() {
@@ -123,44 +124,30 @@ export class UserTile extends LitElement {
 	static get properties() {
 		return {
 			background: {
-				type: String,
-				reflect: true,
-				value: null
+				type: String
 			},
 			backgroundColor: {
 				type: String,
-				reflect: true,
-				value: null,
 				attribute: 'background-color'
 			},
 			icon: {
-				type: String,
-				value: null,
-				reflect: true
+				type: String
 			},
 			name: {
-				type: String,
-				value: null,
-				reflect: true
+				type: String
 			},
 			text: {
-				type: String,
-				value: null,
-				reflect: true
+				type: String
 			},
 			token: {
-				type: String,
-				value: null,
-				reflect: true
+				type: String
 			},
 			placeholders: {
 				type: Boolean,
-				value: false,
 				reflect: true
 			},
 			_placeholders: {
 				type: Boolean,
-				value: false,
 				reflect: true
 			},
 		};
@@ -168,9 +155,9 @@ export class UserTile extends LitElement {
 
 	render() {
 		return html`
-			<d2l-card text="${this._getA11YTitleString()}" ?loading="${this._placeholders}" href="javascript:void(0);">
+			<d2l-card text="${ifDefined(this._getA11YTitleString())}" ?loading="${this._placeholders}" href="javascript:void(0);">
 				<d2l-card-loading-shimmer ?loading="${this._placeholders}" slot="header">
-					<div class="user-tile-background" style="${this._getBackgroundStyle()}"></div>
+					<div class="user-tile-background" style="${ifDefined(this._getBackgroundStyle())}"></div>
 				</d2l-card-loading-shimmer>
 				<div slot="badge" class="user-tile-avatar" aria-hidden="true">
 				${this._showIconPlaceholder() ? html`
@@ -180,7 +167,7 @@ export class UserTile extends LitElement {
 							</svg>
 						</d2l-icon-custom>
 					` : html`
-						<d2l-image @d2l-image-failed-to-load="${this._onImageLoadFailure}" image-url="${this.icon}" token="${this.token}" alternate-text=""></d2l-image>
+						<d2l-image @d2l-image-failed-to-load="${this._onImageLoadFailure}" image-url="${ifDefined(this.icon)}" token="${ifDefined(this.token)}" alternate-text=""></d2l-image>
 					`}
 				</div>
 				<div class="d2l-body-compact user-tile-information-wrapper" slot="content">
@@ -211,7 +198,7 @@ export class UserTile extends LitElement {
 	}
 
 	_showNamePlaceholder() {
-		return this._placeholders || typeof this.name !== 'string';
+		return this._placeholders || (typeof this.name !== 'string');
 	}
 
 	_onImageLoadFailure() {
@@ -224,12 +211,12 @@ export class UserTile extends LitElement {
 
 	_getBackgroundStyle() {
 		if (this.background) {
-			return 'background: url(' + this.background + '); background-size: cover; background-position: center;';
+			return `background: url(${this.background}); background-size: cover; background-position: center;`;
 		}
 		if (this.backgroundColor) {
-			return 'background-color: ' + this.backgroundColor + ';';
+			return `background-color: ${this.backgroundColor};`;
 		}
-		return '';
+		return undefined;
 	}
 }
 
