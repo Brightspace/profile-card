@@ -91,7 +91,7 @@ describe('<d2l-user-card-auto>', function() {
 			});
 
 			it('sets the properties on the internal <d2l-user-card> appropriately', function(done) {
-				var innerTile = component.$$('d2l-user-card');
+				var innerTile = component.shadowRoot.querySelector('d2l-user-card-lit');
 				sandbox.stub(innerTile, '_onImageLoadFailure', function() {});
 				sandbox.stub(component, 'generateUserRequest', function() {
 					component._name = 'name';
@@ -115,7 +115,7 @@ describe('<d2l-user-card-auto>', function() {
 
 	describe('content placeholders', function() {
 		it('should set the placeholder property on the internal <d2l-user-card>', function() {
-			var internalTile = component.$$('d2l-user-card');
+			var internalTile = component.shadowRoot.querySelector('d2l-user-card-lit');
 
 			component._doneRequests = false;
 			expect(internalTile.placeholders).to.be.true;

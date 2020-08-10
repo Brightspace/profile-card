@@ -1,9 +1,8 @@
-import '@polymer/polymer/polymer-legacy.js';
-import 'd2l-organization-hm-behavior/d2l-organization-hm-behavior.js';
+import { D2LOrganizationHMBehaviorMixin } from './d2l-organization-hm-behavior-lit.js'; //TODO: Fix once the module is updated
 import { Classes, Rels } from 'd2l-hypermedia-constants';
 import SirenParse from 'siren-parser';
 
-export const UserProfileMixin = superclass => class extends superclass {
+export const D2LUserProfileMixin = (superclass) => class extends D2LOrganizationHMBehaviorMixin(superclass) {
 
 	static get properties() {
 		return {
@@ -91,22 +90,64 @@ export const UserProfileMixin = superclass => class extends superclass {
 			this.options = options || this.options;
 			this._previousUserCall = { userUrl: this.userUrl, token: this.token };
 
-			await this._getBackgroundFromUsersLatestFolioEvidence() || await this._getBackgroundFromUsersLatestFolioEvidence() || await this.__getInstitutionThemeBackground();
+			let done = await this._getBackgroundFromUsersLatestFolioEvidence();
+			if (!done) {
+				done = await this._getBackgroundFromUsersFirstCourse();
+			}
+			if (!done) {
+				done = await this._getInstitutionThemeBackground();
+			}
 		}
 
 		return undefined;
 	}
 
 	async _getBackgroundFromUsersLatestFolioEvidence() {
-		return await this._fetchUser() && await this._fetchFolio();
+		let success = undefined;
+		try {
+			success = await this._fetchUser();
+			if (success) {
+				success = await this._fetchFolio();
+			}
+		}
+		catch (error) {
+			success = undefined;
+		}
+		return success;
 	}
 
 	async _getBackgroundFromUsersFirstCourse() {
-		return await this._fetchEnrollments() && await this._fetchOrganization() && await this._fetchOrganizationImage();
+		let success = undefined;
+		try {
+			success = await this._fetchEnrollments();
+			if (success) {
+				success = await this._fetchOrganization();
+			}
+			if (success) {
+				await this._fetchOrganizationImage();
+			}
+		}
+		catch (error) {
+			success = undefined;
+		}
+		return success;
 	}
 
 	async _getInstitutionThemeBackground() {
-		return await this._fetchRoot() && await this._fetchInstitution() && await this._fetchTheme();
+		let success = undefined;
+		try {
+			success = await this._fetchRoot();
+			if (success) {
+				success = await this._fetchInstitution();
+			}
+			if (success) {
+				success = await this._fetchTheme();
+			}
+		}
+		catch (error) {
+			success = undefined;
+		}
+		return success;
 	}
 
 	async _fetchSirenEntity(url) {
@@ -149,12 +190,12 @@ export const UserProfileMixin = superclass => class extends superclass {
 	}
 
 	async _fetchFolio() {
-		if (!this.options.background) {
+		if (!this.options || !this.options.background) {
 			return undefined;
 		}
 
 		if (!this._folioUrl) {
-			return false;
+			return undefined;
 		}
 
 		const folioEntity = await this._fetchSirenEntity(this._folioUrl);
@@ -170,12 +211,12 @@ export const UserProfileMixin = superclass => class extends superclass {
 					return true;
 			}
 		}
-		return false;
+		return undefined;
 	}
 
 	async _fetchEnrollments() {
 		if (!this._enrollmentsUrl) {
-			return false;
+			return undefined;
 		}
 
 		this._enrollmentsUrl += '?pageSize=2&orgUnitTypeId=3&embedDepth=1';
@@ -186,7 +227,7 @@ export const UserProfileMixin = superclass => class extends superclass {
 			var organizationUrl = enrollmentEntities[0].getLinkByRel(Rels.organization).href;
 			return organizationUrl;
 		} else {
-			return false;
+			return undefined;
 		}
 	}
 
@@ -195,7 +236,7 @@ export const UserProfileMixin = superclass => class extends superclass {
 		var imageLink = organizationEntity.getSubEntityByClass(Classes.courseImage.courseImage);
 
 		if (!imageLink) {
-			return false;
+			return undefined;
 		}
 
 		var organizationImageUrl = imageLink.href;
@@ -211,7 +252,7 @@ export const UserProfileMixin = superclass => class extends superclass {
 
 	async _fetchRoot() {
 		if (!this._rootUrl) {
-			throw new Error('Root URL not set');
+			return undefined;
 		}
 
 		const rootEntity = await this._fetchSirenEntity(this._rootUrl);
@@ -236,12 +277,3 @@ export const UserProfileMixin = superclass => class extends superclass {
 		return themeEntity;
 	}
 };
-
-/*
-* Behavior for user profile-related elements such as user-tile and user-switcher.
-* @polymerBehavior window.D2L.UserProfileBehavior
-*/
-window.D2L.UserProfileBehavior = [
-	D2L.PolymerBehaviors.Hypermedia.OrganizationHMBehavior,
-	window.D2L.UserProfileBehaviorImpl
-];
