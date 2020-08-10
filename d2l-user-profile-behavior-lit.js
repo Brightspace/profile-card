@@ -19,19 +19,22 @@ export const UserProfileMixin = superclass => class extends superclass {
 			},
 			_backgroundColor: {
 				type: String,
-				observer: '_checkDoneRequests',
 				value: ''
 			},
 			_backgroundUrl: {
 				type: String,
-				observer: '_checkDoneRequests',
 				value: ''
 			},
 			_name: {
 				type: String,
-				observer: '_checkDoneRequests',
 				value: ''
 			}
+		};
+	}
+
+	updated(changedProperties) {
+		if (changedProperties.has('_backgroundColor') || changedProperties.has('_backgroundUrl') || changedProperties.has('_name')) {
+			this._checkDoneRequests();
 		}
 	}
 
@@ -154,7 +157,7 @@ export const UserProfileMixin = superclass => class extends superclass {
 			return false;
 		}
 
-		const folioEntity = await this._fetchSirenEntity(this._folioUrl)
+		const folioEntity = await this._fetchSirenEntity(this._folioUrl);
 		var tiles = (folioEntity.getSubEntitiesByRel(Rels.Folio.evidence));
 		for (var i = 0; i < tiles.length; i++) {
 			var content = tiles[i].getSubEntityByRel(Rels.Folio.contentItem);
@@ -188,7 +191,7 @@ export const UserProfileMixin = superclass => class extends superclass {
 	}
 
 	async _fetchOrganization(organizationUrl) {
-		const organizationEntity = await this._fetchSirenEntity(organizationUrl)
+		const organizationEntity = await this._fetchSirenEntity(organizationUrl);
 		var imageLink = organizationEntity.getSubEntityByClass(Classes.courseImage.courseImage);
 
 		if (!imageLink) {
@@ -218,7 +221,7 @@ export const UserProfileMixin = superclass => class extends superclass {
 	}
 
 	async _fetchInstitution(institutionUrl) {
-		const institutionEntity = await this._fetchSirenEntity(institutionUrl)
+		const institutionEntity = await this._fetchSirenEntity(institutionUrl);
 		var themeUrl = (institutionEntity.getLinkByRel(Rels.Themes.theme) || {}).href;
 		return themeUrl;
 	}
@@ -228,11 +231,11 @@ export const UserProfileMixin = superclass => class extends superclass {
 		if (themeEntity.properties) {
 			this._backgroundColor = themeEntity.properties.BackgroundColor;
 		} else {
-			throw new Error('Theme colour not available');
+			return undefined;
 		}
 		return themeEntity;
 	}
-}
+};
 
 /*
 * Behavior for user profile-related elements such as user-tile and user-switcher.
