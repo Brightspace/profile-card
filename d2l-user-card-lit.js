@@ -147,8 +147,7 @@ export class UserTile extends LitElement {
 				reflect: true
 			},
 			_placeholders: {
-				type: Boolean,
-				reflect: true
+				type: Boolean
 			},
 		};
 	}
