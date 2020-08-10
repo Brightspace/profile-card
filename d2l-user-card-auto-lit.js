@@ -63,7 +63,7 @@ export class UserTileAuto extends D2LUserProfileMixin(LitElement) {
 
 	render() {
 		return html`
-			<d2l-user-card-lit name="${this._name}" icon="${this._iconUrl}" background="${this._backgroundUrl}" background-color="${this._backgroundColor}" token="${this.token}" placeholders="${!this._doneRequests}">
+			<d2l-user-card-lit name="${this._name}" icon="${this._iconUrl}" background="${this._backgroundUrl}" background-color="${this._backgroundColor}" token="${this.token}" ?placeholders="${!this._doneRequests}">
 				<slot></slot>
 			</d2l-user-card-lit>
 		`;

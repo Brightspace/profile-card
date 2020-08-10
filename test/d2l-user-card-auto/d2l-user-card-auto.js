@@ -1,6 +1,7 @@
 /* global describe, beforeEach, afterEach, it, expect, fixture, sinon, Promise */
 
 'use strict';
+import { afterNextRender } from '@polymer/polymer/lib/utils/render-status';
 
 describe('<d2l-user-card-auto>', function() {
 	var component,
@@ -91,23 +92,25 @@ describe('<d2l-user-card-auto>', function() {
 			});
 
 			it('sets the properties on the internal <d2l-user-card> appropriately', function(done) {
-				var innerTile = component.shadowRoot.querySelector('d2l-user-card-lit');
-				sandbox.stub(innerTile, '_onImageLoadFailure', function() {});
-				sandbox.stub(component, 'generateUserRequest', function() {
-					component._name = 'name';
-					component._iconUrl = 'iconUrl';
-					component._backgroundUrl = 'backgroundUrl';
-					component._backgroundColor = 'backgroundColor';
-				});
+				afterNextRender(component, () => {
+					var innerTile = component.shadowRoot.querySelector('d2l-user-card-lit');
+					sandbox.stub(innerTile, '_onImageLoadFailure', function() {});
+					sandbox.stub(component, 'generateUserRequest', function() {
+						component._name = 'name';
+						component._iconUrl = 'iconUrl';
+						component._backgroundUrl = 'backgroundUrl';
+						component._backgroundColor = 'backgroundColor';
+					});
 
-				component.getToken = getToken;
-				component.userUrl = userUrl;
-				setTimeout(function() {
-					expect(innerTile.name).to.equal('name');
-					expect(innerTile.icon).to.equal('iconUrl');
-					expect(innerTile.background).to.equal('backgroundUrl');
-					expect(innerTile.backgroundColor).to.equal('backgroundColor');
-					done();
+					component.getToken = getToken;
+					component.userUrl = userUrl;
+					setTimeout(function() {
+						expect(innerTile.name).to.equal('name');
+						expect(innerTile.icon).to.equal('iconUrl');
+						expect(innerTile.background).to.equal('backgroundUrl');
+						expect(innerTile.backgroundColor).to.equal('backgroundColor');
+						done();
+					});
 				});
 			});
 		});
@@ -115,13 +118,15 @@ describe('<d2l-user-card-auto>', function() {
 
 	describe('content placeholders', function() {
 		it('should set the placeholder property on the internal <d2l-user-card>', function() {
-			var internalTile = component.shadowRoot.querySelector('d2l-user-card-lit');
+			afterNextRender(component, () => {
+				var internalTile = component.shadowRoot.querySelector('d2l-user-card-lit');
 
-			component._doneRequests = false;
-			expect(internalTile.placeholders).to.be.true;
+				component._doneRequests = false;
+				expect(internalTile.placeholders).to.be.true;
 
-			component._doneRequests = true;
-			expect(internalTile.placeholders).to.be.false;
+				component._doneRequests = true;
+				expect(internalTile.placeholders).to.be.false;
+			});
 		});
 	});
 });
