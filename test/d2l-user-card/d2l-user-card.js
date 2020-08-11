@@ -20,10 +20,11 @@ describe('<d2l-user-card>', function() {
 
 	describe('given that the tile should render the appropriate data provided', function() {
 		describe('when the `icon` attribute is not provided', function() {
-			it('should render the default icon only', function() {
+			it('should render the default icon only', function(done) {
 				afterNextRender(component, () => {
 					expect(component.shadowRoot.querySelector('.user-tile-avatar d2l-icon-custom')).to.exist;
 					expect(component.shadowRoot.querySelector('.user-tile-avatar d2l-image')).to.not.exist;
+					done();
 				});
 			});
 		});
@@ -34,10 +35,11 @@ describe('<d2l-user-card>', function() {
 				flush();
 			});
 
-			it('should render the custom icon only', function() {
+			it('should render the custom icon only', function(done) {
 				afterNextRender(component, () => {
 					expect(component.shadowRoot.querySelector('.user-tile-avatar d2l-icon-custom')).to.not.exist;
 					expect(component.shadowRoot.querySelector('.user-tile-avatar d2l-image')).to.exist;
+					done();
 				});
 			});
 		});
@@ -49,22 +51,24 @@ describe('<d2l-user-card>', function() {
 		});
 
 		describe('for name field', function() {
-			it('should show a placeholder for the name when name is not set', function() {
+			it('should show a placeholder for the name when name is not set', function(done) {
 				afterNextRender(component, () => {
 					var name = component.shadowRoot.querySelector('.user-tile-name:not(.text-placeholder)');
 					var placeholder = component.shadowRoot.querySelector('.user-tile-name.text-placeholder');
 					expect(name.hasAttribute('hidden')).to.be.true;
 					expect(placeholder.hasAttribute('hidden')).to.be.false;
+					done();
 				});
 			});
 
-			it('should hide the placeholder for the name when name is set', function() {
+			it('should hide the placeholder for the name when name is set', function(done) {
+				component.name = '';
 				afterNextRender(component, () => {
-					component.name = '';
 					var name = component.shadowRoot.querySelector('.user-tile-name:not(.text-placeholder)');
 					var placeholder = component.shadowRoot.querySelector('.user-tile-name.text-placeholder');
 					expect(name.hasAttribute('hidden')).to.be.false;
 					expect(placeholder.hasAttribute('hidden')).to.be.true;
+					done();
 				});
 			});
 		});
