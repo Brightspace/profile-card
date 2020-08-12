@@ -15,7 +15,7 @@
   "scripts": {
     "lint": "npm run lint:js",
     "lint:js": "eslint . --ext .js,.html test/**/*.js test/**/*.html demo/**/*.js demo/**/*.html",
-    "lint:lit-analyzer": "lit-analyzer *.js demo/**/* --strict --rules.no-unknown-tag-name off --rules.no-unknown-event error --maxWarnings 0",
+    "lint:lit-analyzer": "lit-analyzer *.js demo/**/* test/**/* --strict --rules.no-unknown-tag-name off --rules.no-unknown-event error --maxWarnings 0",
     "test": "npm run lint && polymer test --skip-plugin sauce"
   },
   "bugs": {
