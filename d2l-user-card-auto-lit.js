@@ -3,11 +3,9 @@
 */
 import '@polymer/polymer/polymer-legacy.js';
 
-import 'd2l-organization-hm-behavior/d2l-organization-hm-behavior.js';
-import 'd2l-user-profile-behavior/d2l-user-profile-behavior.js';
 import './d2l-user-card-lit.js';
 import { LitElement, css, html } from 'lit-element';
-import { D2LUserProfileMixin } from './d2l-user-profile-behavior-lit.js';
+import { D2LUserProfileMixin } from 'd2l-user-profile-behavior';
 
 export class UserTileAuto extends D2LUserProfileMixin(LitElement) {
 	static get styles() {
