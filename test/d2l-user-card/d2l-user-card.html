@@ -4,36 +4,36 @@
 		<meta charset="utf-8">
 		<script src="../../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
 		<script src="../../node_modules/wct-browser-legacy/browser.js"></script>
-		<script type="module" src="../../d2l-user-card-lit.js"></script>
+		<script type="module" src="../../d2l-user-card.js"></script>
 	</head>
 	<body>
 		<test-fixture id="basic">
 			<template>
-				<d2l-user-card-lit></d2l-user-card-lit>
+				<d2l-user-card></d2l-user-card>
 			</template>
 		</test-fixture>
 
 		<test-fixture id="with-icon">
 			<template>
-				<d2l-user-card-lit icon="testimage.jpg"></d2l-user-card-lit>
+				<d2l-user-card icon="testimage.jpg"></d2l-user-card>
 			</template>
 		</test-fixture>
 
 		<test-fixture id="with-user-data">
 			<template>
-				<d2l-user-card-lit
+				<d2l-user-card
 					icon="testimage.jpg"
 					name="Lisa Simpson"
 					grade="4th Grade"
 					style="background-color:#0000FF;">
-				</d2l-user-card-lit>
+				</d2l-user-card>
 			</template>
 		</test-fixture>
 
 		<test-fixture id="with-placeholders">
 			<template>
-				<d2l-user-card-lit placeholders>
-				</d2l-user-card-lit>
+				<d2l-user-card placeholders>
+				</d2l-user-card>
 			</template>
 		</test-fixture>
 

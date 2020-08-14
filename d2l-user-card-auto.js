@@ -1,7 +1,7 @@
 /*
 `d2l-user-card-auto` is a Litelement-based web component for creating a user card which automatically fills itself out when given a token and url.
 */
-import './d2l-user-card-lit.js';
+import './d2l-user-card.js';
 import { LitElement, css, html } from 'lit-element';
 import { D2LUserProfileMixin } from 'd2l-user-profile-behavior';
 
@@ -59,9 +59,9 @@ export class UserTileAuto extends D2LUserProfileMixin(LitElement) {
 
 	render() {
 		return html`
-			<d2l-user-card-lit name="${this._name}" icon="${this._iconUrl}" background="${this._backgroundUrl}" background-color="${this._backgroundColor}" token="${this.token}" ?placeholders="${!this._doneRequests}">
+			<d2l-user-card name="${this._name}" icon="${this._iconUrl}" background="${this._backgroundUrl}" background-color="${this._backgroundColor}" token="${this.token}" ?placeholders="${!this._doneRequests}">
 				<slot></slot>
-			</d2l-user-card-lit>
+			</d2l-user-card>
 		`;
 	}
 
