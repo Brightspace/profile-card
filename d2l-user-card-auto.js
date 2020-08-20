@@ -36,7 +36,7 @@ export class UserTileAuto extends D2LUserProfileMixin(LitElement) {
 			getToken: {
 				type: Object,
 				value: null,
-				attribute: 'get-token'
+				attribute: false
 			},
 			_doneRequests: {
 				type: Boolean
