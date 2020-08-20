@@ -30,11 +30,13 @@ export class UserTileAuto extends D2LUserProfileMixin(LitElement) {
 		return {
 			userUrl: {
 				type: String,
-				value: null
+				value: null,
+				attribute: 'user-url'
 			},
 			getToken: {
 				type: Object,
-				value: null
+				value: null,
+				attribute: 'get-token'
 			},
 			_doneRequests: {
 				type: Boolean
@@ -66,6 +68,7 @@ export class UserTileAuto extends D2LUserProfileMixin(LitElement) {
 	}
 
 	updated(changedProperties) {
+		super.updated(changedProperties);
 		if (changedProperties.has('userUrl') || changedProperties.has('getToken')) {
 			this._onUserChange(this.userUrl, this.getToken);
 		}
