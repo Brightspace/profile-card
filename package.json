@@ -5,7 +5,7 @@
     "user",
     "tile"
   ],
-  "version": "6.1.0",
+  "version": "7.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/Brightspace/user-tile.git"
