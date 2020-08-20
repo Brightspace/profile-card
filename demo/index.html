@@ -50,38 +50,46 @@ const $_documentContainer = document.createElement('template');
 
 $_documentContainer.innerHTML = `<div class="vertical-section-container centered">
 		<h3>Slow loading user card</h3>
-		<demo-snippet>
-			<template>
-				<d2l-user-card id="slow-card">
-					<p>User card content</p>
-				</d2l-user-card>
-			</template>
-		</demo-snippet>
+			<demo-snippet>
+				<template>
+					<div style="display: flex">
+						<d2l-user-card id="slow-card">
+							<p>User card content</p>
+						</d2l-user-card>
+					</div>
+				</template>
+			</demo-snippet>
 
 		<h3>User card with placeholder elements</h3>
 		<demo-snippet>
 			<template>
-				<d2l-user-card id="placeholder-card" placeholders="">
-					<p>User card content</p>
-				</d2l-user-card>
+				<div style="display: flex">
+					<d2l-user-card id="placeholder-card" placeholders="">
+						<p>User card content</p>
+					</d2l-user-card>
+				</div>
 			</template>
 		</demo-snippet>
 
 		<h3>User card with no image background</h3>
 		<demo-snippet>
 			<template>
-				<d2l-user-card name="Abe Lincoln" icon="abe.jpg">
-					<p>User card content</p>
-				</d2l-user-card>
+				<div style="display: flex">
+					<d2l-user-card name="Abe Lincoln" icon="abe.jpg">
+						<p>User card content</p>
+					</d2l-user-card>
+				</div>
 			</template>
 		</demo-snippet>
 
 		<h3>User card with color background</h3>
 		<demo-snippet>
 			<template>
-				<d2l-user-card name="Joan of Arc" icon="joan.jpg" background-color="#0000FF">
-					<p>User card content</p>
-				</d2l-user-card>
+				<div style="display: flex">
+					<d2l-user-card name="Joan of Arc" icon="joan.jpg" background-color="#0000FF">
+						<p>User card content</p>
+					</d2l-user-card>
+				</div>
 			</template>
 		</demo-snippet>
 	</div>`;
@@ -114,6 +122,7 @@ setTimeout(function() {
 setTimeout(function() {
 	slowCard.background = 'abe.jpg';
 	placeholderCard.background = 'joan.jpg';
+	placeholderCard.placeholders = false;
 }, 5000);
 </script>
 </body>
