@@ -149,12 +149,16 @@ export class UserTile extends LitElement {
 			_placeholders: {
 				type: Boolean
 			},
+			href: {
+				type: String,
+				attribute: 'href'
+			},
 		};
 	}
 
 	render() {
 		return html`
-			<d2l-card text="${ifDefined(this._getA11YTitleString())}" ?loading="${this._placeholders}" href="javascript:void(0);">
+			<d2l-card text="${ifDefined(this._getA11YTitleString())}" ?loading="${this._placeholders}" href="${this.href || 'javascript:void(0);'}">
 				<d2l-card-loading-shimmer ?loading="${this._placeholders}" slot="header">
 					<div class="user-tile-background" style="${ifDefined(this._getBackgroundStyle())}"></div>
 				</d2l-card-loading-shimmer>
