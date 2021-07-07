@@ -92,6 +92,17 @@ $_documentContainer.innerHTML = `<div class="vertical-section-container centered
 				</div>
 			</template>
 		</demo-snippet>
+
+		<h3>User card with link</h3>
+		<demo-snippet>
+			<template>
+				<div style="display: flex">
+					<d2l-user-card name="Joan of Arc" icon="joan.jpg" background-color="#0000FF" href="this-is-a-link">
+						<p>User card content</p>
+					</d2l-user-card>
+				</div>
+			</template>
+		</demo-snippet>
 	</div>`;
 
 document.body.appendChild($_documentContainer.content);

@@ -4,6 +4,7 @@
 import './d2l-user-card.js';
 import { LitElement, css, html } from 'lit-element';
 import { D2LUserProfileMixin } from 'd2l-user-profile-behavior';
+import { ifDefined } from 'lit-html/directives/if-defined';
 
 export class UserTileAuto extends D2LUserProfileMixin(LitElement) {
 	static get styles() {
@@ -55,13 +56,17 @@ export class UserTileAuto extends D2LUserProfileMixin(LitElement) {
 			},
 			token: {
 				type: String
-			}
+			},
+			href: {
+				type: String,
+				attribute: 'href'
+			},
 		};
 	}
 
 	render() {
 		return html`
-			<d2l-user-card name="${this._name}" icon="${this._iconUrl}" background="${this._backgroundUrl}" background-color="${this._backgroundColor}" token="${this.token}" ?placeholders="${!this._doneRequests}">
+			<d2l-user-card name="${this._name}" icon="${this._iconUrl}" background="${this._backgroundUrl}" background-color="${this._backgroundColor}" token="${this.token}" ?placeholders="${!this._doneRequests}" href="${ifDefined(this.href)}">
 				<slot></slot>
 			</d2l-user-card>
 		`;
